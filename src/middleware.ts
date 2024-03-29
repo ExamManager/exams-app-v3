@@ -23,6 +23,11 @@ export async function middleware(request: NextRequest) {
 
     if (session && request.nextUrl.pathname.startsWith("/admin") && !isAdmin) {
         return NextResponse.redirect(getAbsoluteUrl(siteUrls.dashboard.home));
+    } 
+
+        // eqals to not starts with
+    if (session && request.nextUrl.pathname === "/admin" && isAdmin) {
+        return NextResponse.redirect(getAbsoluteUrl(siteUrls.admin.dashboard));
     }
 }
 
