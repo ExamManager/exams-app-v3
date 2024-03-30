@@ -8,7 +8,7 @@
  */
 
 export const siteUrls = {
-    publicUrl: "https://saasdemo.rapidlaunch.xyz",
+    publicUrl: "https://dev.examtimer.tech",
     home: "/",
     auth: {
         login: "/auth/login",
@@ -20,7 +20,7 @@ export const siteUrls = {
     blog: "/blog",
     docs: "/docs",
     maintenance: "/maintenance",
-    rapidlaunch: "https://www.rapidlaunch.xyz",
+    examtimer: "https://dev.examtimer.tech",
     dashboard: {
         home: "/dashboard",
     },
