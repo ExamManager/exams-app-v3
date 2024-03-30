@@ -14,11 +14,13 @@ export default function AppLayout({ children }: AppLayoutProps) {
             {children}
 
             <Suspense fallback={null}>
-                <NewUserSetup />
-            </Suspense>
-            <Suspense fallback={null}>
                 <CreateFirstOrgForm />
             </Suspense>
+
+            <Suspense fallback={null}>
+                <NewUserSetup />
+            </Suspense>
+            
         </Fragment>
     );
 }

@@ -21,7 +21,7 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
                     Say goodbye to long development cycles. Build and launch
                     your SaaS faster with our elite boilerplate. Start today!{" "}
                     <Link
-                        href={siteUrls.rapidlaunch}
+                        href={siteUrls.examtimer}
                         className="font-medium text-foreground underline underline-offset-4"
                     >
                         Rapidlaunch.xyz
