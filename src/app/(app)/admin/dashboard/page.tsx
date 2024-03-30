@@ -14,7 +14,7 @@ export default async function AdminDashPage() {
             <div className="w-full">
                 <div className="flex flex-col items-center justify-center h-96">
                     <h1 className="text-4xl font-semibold">Welcome back, {user?.name}!</h1>
-                    <p className="text-muted-foreground">Here's an overview of your apps performance and statistics.</p>
+                    <p className="text-muted-foreground">Here is an overview of your apps performance and statistics.</p>
                 </div>
             </div>
         </AppPageShell>
