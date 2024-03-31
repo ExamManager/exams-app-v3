@@ -2,5 +2,5 @@ import Stripe from "stripe"
 
 import { env } from "@/env"
 
-// @ts-ignore
+// @ts-expect-error
 export const stripe = new Stripe(env.STRIPE_API_KEY, { apiVersion: "2022-11-15", typescript: true, })
