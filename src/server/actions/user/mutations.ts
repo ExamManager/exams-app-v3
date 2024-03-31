@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/server/db";
-import { accounts, userInsertSchema, users } from "@/server/db/schema";
+import { accounts, billing, userInsertSchema, users } from "@/server/db/schema";
 import { protectedProcedure, superAdminProcedure } from "@/server/procedures";
 import { eq } from "drizzle-orm";
 import type { z } from "zod";
@@ -128,6 +128,18 @@ export async function deleteUserMutation({ id }: DeleteUserProps) {
 
 export async function completeNewUserSetupMutation() {
     const { user } = await protectedProcedure();
+
+    // create billing row for user
+    await db.
+        insert(billing)
+        .values({
+            userId: user.id,
+            stripeCustomerId: "",
+            stripeSubscriptionId:"",
+            stripePriceId: "",
+            stripeCurrentPeriodEnd: new Date(),
+        })
+        .execute();
 
     return await db
         .update(users)
