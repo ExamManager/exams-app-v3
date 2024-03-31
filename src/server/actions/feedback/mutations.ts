@@ -37,6 +37,8 @@ export async function createFeedbackMutation(props: CreateFeedbackProps) {
         });
     }
 
+    console.log(feedbackParse.data);
+
     return await db
         .insert(feedback)
         .values({
