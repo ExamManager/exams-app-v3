@@ -1,4 +1,4 @@
-import { users, billing } from "@/server/db/schema"
+import { type users, type billing } from "@/server/db/schema"
 
 export type SubscriptionPlan = {
     name: string

@@ -1,4 +1,4 @@
-import { UserSubscriptionPlan } from "@/types/billing"
+import { type UserSubscriptionPlan } from "@/types/billing"
 import { enterprisePlan, freePlan, proPlan } from "@/config/subscriptions"
 import { getUserBillingQuery } from '@/server/actions/billing/queries'
 
@@ -13,7 +13,7 @@ export async function getUserSubscriptionPlan(): Promise<UserSubscriptionPlan> {
     stripeCustomerId: billing.stripeCustomerId,
     stripeSubscriptionId: billing.stripeSubscriptionId,
     stripeCurrentPeriodEnd: billing.stripeCurrentPeriodEnd,
-    stripePriceId: billing.stripePriceId || "",
+    stripePriceId: billing.stripePriceId ?? freePlan.stripePriceId,
   }
 
   const isPaid =

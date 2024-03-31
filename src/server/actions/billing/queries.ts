@@ -2,10 +2,8 @@
 
 import { db } from "@/server/db";
 import { billing } from "@/server/db/schema";
-import { adminProcedure, protectedProcedure } from "@/server/procedures";
+import { protectedProcedure } from "@/server/procedures";
 import { eq } from "drizzle-orm";
-import { unstable_noStore as noStore } from "next/cache";
-import { z } from "zod";
 
 /**
  * Get billing details of a user
