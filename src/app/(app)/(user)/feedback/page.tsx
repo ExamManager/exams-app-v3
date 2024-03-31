@@ -22,7 +22,7 @@ export default async function UserFeedbackPage() {
         >
             <div className="flex w-full items-start justify-between">
                 <h2 className="text-lg font-medium">
-                    {feedbacks.length} feedbacks you have created.
+                    You have created {feedbacks.length} feedback{feedbacks.length > 1 ? "s" : ""}
                 </h2>
 
                 <CreateFeedbackForm />
