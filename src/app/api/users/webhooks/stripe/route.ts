@@ -77,7 +77,7 @@ export async function POST(req: Request) {
     await updateBilling2Mutation({
       stripeCustomerId: subscription2?.customer as string,
       stripePriceId: subscription2?.items.data[0]?.price.id as string,
-      stripeCurrentPeriodEnd: subscription2?.current_period_end * 1000,
+      stripeCurrentPeriodEnd: subscription2?.current_period_end || 0 * 1000,
     })
   }
 
