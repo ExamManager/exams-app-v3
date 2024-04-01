@@ -10,7 +10,7 @@ export default function ExamsPage() {
         >
             <div className="w-full">
                 <div className="flex flex-col items-center justify-center h-40">
-                    <h1 className="text-4xl font-semibold">Welcome back!</h1>
+                    <h1 className="text-4xl font-semibold">Exam Manager</h1>
                     <p className="text-muted-foreground">Here you can manage your exams.</p>
                 </div>
             </div>
