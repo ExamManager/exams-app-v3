@@ -23,6 +23,7 @@ export const siteUrls = {
     examtimer: "https://dev.examtimer.tech",
     dashboard: {
         home: "/dashboard",
+        exams: "/exams",
     },
     feedback: "/feedback",
     organization: {
