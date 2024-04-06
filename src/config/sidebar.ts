@@ -101,6 +101,11 @@ const navigation: SidebarNavItems[] = [
                 icon: LayoutDashboardIcon,
                 href: siteUrls.dashboard.home,
             },
+            {
+                label: "Exams",
+                icon: BookTextIcon,
+                href: siteUrls.dashboard.exams,
+            }
         ],
     },
     {
