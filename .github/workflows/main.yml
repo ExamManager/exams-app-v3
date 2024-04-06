@@ -1,3 +1,4 @@
+name: lint
 on:
   push:
     branches: ["new"]
@@ -6,7 +7,6 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: ESLint
     steps:
     - uses: actions/checkout@v2
     - name: Install modules
