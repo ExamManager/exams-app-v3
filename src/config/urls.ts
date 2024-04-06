@@ -9,6 +9,7 @@
 
 export const siteUrls = {
     publicUrl: "https://dev.examtimer.tech",
+    github: "https://github.com/examtimer",
     home: "/",
     auth: {
         login: "/auth/login",
