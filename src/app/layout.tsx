@@ -4,7 +4,7 @@ import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
 import "@/styles/globals.css";
 import "@/styles/prism.css";
-import { fontSans } from "@/lib/fonts";
+import { fontHeading, fontSans } from "@/lib/fonts";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${fontSans.className} overflow-x-hidden font-sans`}
+                className={`${fontSans.variable} ${fontHeading.variable} overflow-x-hidden font-sans`}
             >
                 <Providers>
                     <Background>{children}</Background>
