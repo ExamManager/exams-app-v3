@@ -16,6 +16,10 @@ const config = {
         },
         extend: {
             // REMINDER: added for background.tsx
+            fontFamily: {
+                sans: ["var(--font-sans)", ...fontFamily.sans],
+                heading: ["var(--font-heading)", ...fontFamily.sans],
+            },
             backgroundImage: {
                 "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
             },
