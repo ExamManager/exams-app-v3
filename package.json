@@ -51,7 +51,7 @@
         "next": "^14.2.3",
         "next-auth": "^4.24.6",
         "next-mdx-remote": "^4.4.1",
-        "next-themes": "^0.2.1",
+        "next-themes": "^0.3.0",
         "nodemailer": "^6.9.10",
         "postgres": "^3.4.3",
         "react": "18.2.0",
