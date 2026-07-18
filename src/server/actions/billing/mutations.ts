@@ -84,7 +84,6 @@ export async function updateBillingMutation(props: UpdateBillingProps) {
             billingParse.data.stripeCurrentPeriodEnd! 
         ),
     };
-    console.log(billingParse.data.stripeCurrentPeriodEnd)
     return await db
         .update(billing)
         .set(fixedBilling)

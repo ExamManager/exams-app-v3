@@ -53,7 +53,7 @@ const nav: DocsSidebarNavItems[] = [
         items: [
             {
                 id: "introduction",
-                label: "What is Rapidlaunch?",
+                label: "What is ExamManager?",
                 href: "/docs/introduction",
             },
         ],

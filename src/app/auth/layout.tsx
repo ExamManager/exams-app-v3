@@ -15,16 +15,16 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
             <aside className="col-span-1 flex flex-col items-start justify-center gap-6 border-l border-border bg-muted/30 p-10">
                 <Icons.logo as="h3" />
                 <h2 className="text-3xl font-medium">
-                    Build and launch your SaaS this weekend
+                    Run exams with confidence
                 </h2>
                 <p className="font-light text-muted-foreground">
-                    Say goodbye to long development cycles. Build and launch
-                    your SaaS faster with our elite boilerplate. Start today!{" "}
+                    ExamManager helps schools and invigilators manage exam
+                    timers, rooms, and schedules. Learn more at{" "}
                     <Link
-                        href={siteUrls.examtimer}
+                        href={siteUrls.github}
                         className="font-medium text-foreground underline underline-offset-4"
                     >
-                        Rapidlaunch.xyz
+                        github.com/ExamManager
                     </Link>
                 </p>
             </aside>

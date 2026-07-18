@@ -67,7 +67,7 @@ export const features: Feature[] = [
     },
     {
         id: "7",
-        title: "Rapidlaunch Branding",
+        title: "ExamManager Branding",
         inludedIn: [pricingIds.pro, pricingIds.premium],
     },
     {
@@ -82,7 +82,7 @@ export const features: Feature[] = [
     },
     {
         id: "10",
-        title: "Rapidlaunch Branding",
+        title: "ExamManager Branding",
         inludedIn: [pricingIds.premium],
     },
     {
@@ -97,7 +97,7 @@ export const features: Feature[] = [
     },
     {
         id: "13",
-        title: "Rapidlaunch Branding",
+        title: "ExamManager Branding",
         inludedIn: [pricingIds.premium],
     },
 ];

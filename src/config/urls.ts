@@ -8,8 +8,8 @@
  */
 
 export const siteUrls = {
-    publicUrl: "https://dev.examtimer.tech",
-    github: "https://github.com/examtimer",
+    publicUrl: "https://exammanager.dev",
+    github: "https://github.com/ExamManager",
     home: "/",
     auth: {
         login: "/auth/login",
@@ -21,7 +21,7 @@ export const siteUrls = {
     blog: "/blog",
     docs: "/docs/introduction",
     maintenance: "/maintenance",
-    examtimer: "https://dev.examtimer.tech",
+    examtimer: "https://github.com/ExamManager",
     dashboard: {
         home: "/dashboard",
         exams: "/exams",

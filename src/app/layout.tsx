@@ -8,9 +8,9 @@ import { fontHeading, fontSans } from "@/lib/fonts";
 import { Analytics } from "@vercel/analytics/react";
 
 export const metadata = {
-    title: "RapidLaunch - Next.js Boilerplate",
+    title: "ExamManager",
     description:
-        "Next.js boilerplate with shadcn ui, TRPC, TailwindCSS, and Drizzle.",
+        "ExamManager — exam timing and management SaaS built with Next.js, Tailwind CSS, and Drizzle.",
     icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 

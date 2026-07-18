@@ -26,26 +26,23 @@ export const supportInfos: SupportInfo[] = [
     {
         title: "Say Hello",
         description:
-            "Get in touch with us to learn more about our products and services.",
-        email: "hello@example.com",
-        buttonHref: `mailto:hello@example.com`,
-        buttonText: "Get in touch",
+            "Get in touch with us to learn more about ExamManager.",
+        buttonHref: siteUrls.github,
+        buttonText: "Open GitHub",
     },
     {
         title: "Tech Support",
         description:
-            "Get help with any technical issues you are facing. Our team will help you resolve any issues.",
-        email: "tech@example.com",
-        buttonHref: `mailto:tech@example.com`,
-        buttonText: "Get in touch",
+            "Get help with technical issues. Open an issue or discussion on GitHub.",
+        buttonHref: `${siteUrls.github}/exams-app-v3/issues`,
+        buttonText: "Get help",
     },
     {
         title: "Sales",
         description:
-            "Get help with any sales-related questions. Our team will help you with any sales inquiries.",
-        email: "sales@example.com",
-        buttonHref: `mailto:sales@example.com`,
-        buttonText: "Get in touch",
+            "Questions about plans or enterprise use? Reach out via the org on GitHub.",
+        buttonHref: siteUrls.github,
+        buttonText: "Contact org",
     },
     {
         title: "Our Blog",

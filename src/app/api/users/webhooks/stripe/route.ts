@@ -20,7 +20,6 @@ export async function POST(req: Request) {
     )
   } catch (error) {
     const Error = error as Error
-    console.log(error)
     return new Response(`Webhook Error: ${Error.message}`, { status: 400 })
   }
 
@@ -69,8 +68,6 @@ export async function POST(req: Request) {
 
     // take the first subscription
     const subscription2 = subscription.data[0]
-
-    console.log(subscription2)
 
     // Update the user using the mutation.
     // This will update the priceid and currentend in the database.

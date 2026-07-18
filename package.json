@@ -1,7 +1,10 @@
 {
-    "name": "examtimer-saas",
+    "name": "exams-app-v3",
     "version": "0.1.0",
     "private": true,
+    "description": "ExamManager v3 — T3/Drizzle SaaS exam management app",
+    "author": "ExamManager",
+    "license": "MIT",
     "type": "module",
     "scripts": {
         "build": "next build",

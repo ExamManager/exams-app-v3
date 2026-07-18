@@ -6,6 +6,6 @@
 
 export const siteConfig = {
     name: "ExamManager",
-    contactEmail: "support@examtimer.tech",
-    noReplyEmail: "noreply@examtimer.tech",
+    contactEmail: "contact@exammanager.dev",
+    noReplyEmail: "noreply@exammanager.dev",
 } as const;
