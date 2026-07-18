@@ -22,7 +22,6 @@ export async function getMDXData(dir: string) {
                 options: {
                     parseFrontmatter: true,
                     mdxOptions: {
-                        //@ts-expect-error-error
                         rehypePlugins: [AutoIdsToHeading, rehypePrism],
                         format: "mdx",
                     },
