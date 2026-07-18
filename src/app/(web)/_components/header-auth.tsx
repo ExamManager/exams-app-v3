@@ -5,7 +5,13 @@ import Link from "next/link";
 import { Fragment } from "react";
 
 export async function HeaderAuth() {
-    const user = await getUser();
+    let user = null;
+    try {
+        user = await getUser();
+    } catch {
+        // Auth misconfiguration (e.g. missing NEXTAUTH_SECRET) should not blank the marketing site.
+        user = null;
+    }
 
     return (
         <section className="flex items-center space-x-2">
