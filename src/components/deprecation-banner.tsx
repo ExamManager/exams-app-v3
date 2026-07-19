@@ -14,7 +14,7 @@ export function DeprecationBanner() {
         />
         <p className="min-w-0 truncate">
           <span className="font-semibold">Deprecated showcase.</span> ExamManager
-          is no longer an active product — portfolio demo only.
+          is no longer an active product. Portfolio demo only.
         </p>
       </div>
     </div>

@@ -17,7 +17,11 @@ const config = {
         extend: {
             // REMINDER: added for background.tsx
             fontFamily: {
-                sans: ["var(--font-sans)", ...fontFamily.sans],
+                sans: [
+                    "var(--font-geist-sans)",
+                    "var(--font-sans)",
+                    ...fontFamily.sans,
+                ],
                 heading: ["var(--font-heading)", ...fontFamily.sans],
             },
             backgroundImage: {
@@ -59,6 +63,10 @@ const config = {
                 card: {
                     DEFAULT: "hsl(var(--card))",
                     foreground: "hsl(var(--card-foreground))",
+                },
+                brand: {
+                    DEFAULT: "hsl(var(--brand))",
+                    foreground: "hsl(var(--brand-foreground))",
                 },
             },
             borderRadius: {

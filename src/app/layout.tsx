@@ -12,26 +12,26 @@ import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
     metadataBase: new URL("https://exams-app-v3.vercel.app"),
     title: {
-        default: "ExamManager V3",
-        template: "%s | ExamManager V3",
+        default: "ExamManager",
+        template: "%s | ExamManager",
     },
     description:
-        "ExamManager V3 — T3/Drizzle SaaS rewrite portfolio demo for exam timing and school management.",
-    applicationName: "ExamManager V3",
+        "ExamManager helps schools run calm exam days with classroom timers, multi-exam sessions, timetables, and seating.",
+    applicationName: "ExamManager",
     openGraph: {
         type: "website",
         locale: "en_US",
         url: "https://exams-app-v3.vercel.app",
-        title: "ExamManager V3",
+        title: "ExamManager",
         description:
-            "ExamManager V3 — T3/Drizzle SaaS rewrite portfolio demo for exam timing and school management.",
-        siteName: "ExamManager V3",
+            "ExamManager helps schools run calm exam days with classroom timers, multi-exam sessions, timetables, and seating.",
+        siteName: "ExamManager",
     },
     twitter: {
         card: "summary_large_image",
-        title: "ExamManager V3",
+        title: "ExamManager",
         description:
-            "ExamManager V3 — T3/Drizzle SaaS rewrite portfolio demo for exam timing and school management.",
+            "ExamManager helps schools run calm exam days with classroom timers, multi-exam sessions, timetables, and seating.",
     },
     icons: {
         icon: [
@@ -52,7 +52,7 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${fontSans.variable} ${fontHeading.variable} overflow-x-hidden font-sans`}
+                className={`${fontSans.variable} ${fontHeading.variable} overflow-x-hidden font-sans antialiased`}
             >
                 <Providers>
                     <DeprecationBanner />

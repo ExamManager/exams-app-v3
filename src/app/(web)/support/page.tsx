@@ -17,19 +17,16 @@ import Link from "next/link";
 export const metadata: Metadata = {
     title: "Support",
     description:
-        "ExamManager V3 support — portfolio demo contact and help resources.",
+        "ExamManager support for schools and invigilators. Portfolio showcase contact options.",
 };
 
 export default function ContactPage() {
     return (
         <WebPageWrapper>
-            <WebPageHeading
-                title="Support for You"
-                badge="Get in touch with us"
-            >
-                <p>
-                    If you have any questions or need help, feel free to reach
-                    out to us.
+            <WebPageHeading title="Help when exam week gets busy">
+                <p className="max-w-xl text-center text-muted-foreground">
+                    Reach the ExamManager team for questions about timers,
+                    planning, or this portfolio showcase.
                 </p>
             </WebPageHeading>
 

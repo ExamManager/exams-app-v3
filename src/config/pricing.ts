@@ -1,5 +1,5 @@
 /**
- * Canonical ExamManager pricing — aligned with V1 showcase plans.
+ * Canonical ExamManager pricing, aligned with V1 showcase plans.
  */
 
 export type Pricing = {
@@ -89,11 +89,11 @@ export const pricings: Pricing[] = [
     {
         id: pricingIds.standard,
         title: "Standard",
-        description: "For personal use — get started with core exam timing.",
+        description: "For personal use. Get started with core exam timing.",
         price: 0,
         currency: { code: "USD", symbol: "$" },
         duration: "per month",
-        highlight: "No credit card required. Portfolio demo — billing disabled.",
+        highlight: "No credit card required. Portfolio demo, billing disabled.",
         buttonHighlighted: false,
         uniqueFeatures: [
             "For Personal Use only",
@@ -107,11 +107,12 @@ export const pricings: Pricing[] = [
         badge: "Most popular",
         title: "Basic",
         description:
-            "For schools with under 500 students — planning tools included.",
+            "For schools with under 500 students, with planning tools included.",
         price: 9.99,
         currency: { code: "USD", symbol: "$" },
         duration: "per month",
-        highlight: "Most popular for small schools. Portfolio demo — billing disabled.",
+        highlight:
+            "Most popular for small schools. Portfolio demo, billing disabled.",
         buttonHighlighted: true,
         uniqueFeatures: [
             "For Schools with under 500 Students",
@@ -126,11 +127,12 @@ export const pricings: Pricing[] = [
         id: pricingIds.professional,
         title: "Professional",
         description:
-            "For schools with under 1000 students — advanced planning and analysis.",
+            "For schools with under 1000 students, with advanced planning and analysis.",
         price: 19.99,
         currency: { code: "USD", symbol: "$" },
         duration: "per month",
-        highlight: "Custom plans available from $39/mo. Portfolio demo — billing disabled.",
+        highlight:
+            "Custom plans available from $39/mo. Portfolio demo, billing disabled.",
         buttonHighlighted: false,
         uniqueFeatures: [
             "For Schools with under 1000 Students",

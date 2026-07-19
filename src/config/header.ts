@@ -23,6 +23,11 @@ interface NavigationItem {
 
 export const navigation: NavigationItem[] = [
     {
+        id: "features",
+        href: siteUrls.features,
+        label: "Features",
+    },
+    {
         id: "pricing",
         href: siteUrls.pricing,
         label: "Pricing",

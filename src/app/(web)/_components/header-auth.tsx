@@ -3,7 +3,6 @@ import { AUTH_DISABLED } from "@/config/showcase";
 import { siteUrls } from "@/config/urls";
 import { getUser } from "@/server/auth";
 import Link from "next/link";
-import { Fragment } from "react";
 
 export async function HeaderAuth() {
     let user = null;
@@ -26,38 +25,24 @@ export async function HeaderAuth() {
                     <span>Dashboard</span>
                 </Link>
             ) : AUTH_DISABLED ? (
-                <Fragment>
-                    <Link
-                        href={siteUrls.docs}
-                        className={buttonVariants({
-                            variant: "outline",
-                            className: "flex items-center space-x-1",
-                        })}
-                    >
-                        <span>View docs</span>
-                    </Link>
-                    <Link
-                        href={siteUrls.auth.login}
-                        className={buttonVariants({
-                            variant: "secondary",
-                            className: "flex items-center space-x-1",
-                        })}
-                    >
-                        <span>Demo only</span>
-                    </Link>
-                </Fragment>
+                <Link
+                    href={siteUrls.auth.login}
+                    className={buttonVariants({
+                        variant: "secondary",
+                        className: "flex items-center space-x-1",
+                    })}
+                >
+                    <span>Demo only</span>
+                </Link>
             ) : (
-                <Fragment>
-                    <Link
-                        href={siteUrls.auth.signup}
-                        className={buttonVariants({
-                            className: "flex items-center space-x-1",
-                        })}
-                    >
-                        <span>Sign Up</span>
-                        <span className="font-normal"> — it&apos;s free</span>
-                    </Link>
-                </Fragment>
+                <Link
+                    href={siteUrls.auth.signup}
+                    className={buttonVariants({
+                        className: "flex items-center space-x-1",
+                    })}
+                >
+                    <span>Sign up free</span>
+                </Link>
             )}
         </section>
     );

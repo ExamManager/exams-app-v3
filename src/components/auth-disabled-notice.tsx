@@ -11,7 +11,7 @@ export function AuthDisabledNotice() {
         aria-hidden="true"
       />
       <p>
-        Demo only — sign-in and signup are disabled on this public showcase.
+        Demo only. Sign-in and signup are disabled on this public showcase.
       </p>
     </div>
   );

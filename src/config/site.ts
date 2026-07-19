@@ -5,9 +5,9 @@
  */
 
 export const siteConfig = {
-    name: "ExamManager V3",
+    name: "ExamManager",
     description:
-        "ExamManager V3 — T3/Drizzle SaaS rewrite portfolio demo for exam timing and school management.",
+        "ExamManager helps schools run calm exam days with classroom timers, multi-exam sessions, timetables, and seating.",
     contactEmail: "contact@exammanager.dev",
     noReplyEmail: "noreply@exammanager.dev",
 } as const;
