@@ -30,9 +30,7 @@ export default function RootLayout({
                 className={`${fontSans.variable} ${fontHeading.variable} overflow-x-hidden font-sans`}
             >
                 <Providers>
-                    <div className="sticky top-0 z-[60]">
-                        <DeprecationBanner />
-                    </div>
+                    <DeprecationBanner />
                     <Background>{children}</Background>
                     <Toaster richColors position="top-right" expand />
                 </Providers>
