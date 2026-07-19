@@ -7,7 +7,7 @@ export const metadata: Metadata = {
         absolute: "ExamManager",
     },
     description:
-        "ExamManager helps schools run calm exam days with classroom timers, multi-exam sessions, timetables, and seating.",
+        "ExamManager helps schools run calm exam days with classroom timers, multi-paper sessions, and reading time.",
 };
 
 export default function HomePage() {

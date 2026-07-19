@@ -26,7 +26,7 @@ export function SiteFooter() {
                             </span>
                         </Link>
                         <p className="text-sm leading-relaxed text-muted-foreground">
-                            Classroom timers, multi-exam sessions, and calm
+                            Classroom clocks, multi-paper sessions, and calm
                             exam-day tools for schools and invigilators.
                         </p>
                         <p className="text-xs text-muted-foreground/80">

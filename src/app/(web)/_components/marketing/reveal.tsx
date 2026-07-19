@@ -1,7 +1,8 @@
 "use client";
 
-import { motion, useReducedMotion } from "motion/react";
-import type { ReactNode } from "react";
+import { useReducedMotion } from "motion/react";
+import type { CSSProperties, ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 type RevealProps = {
     children: ReactNode;
@@ -9,26 +10,27 @@ type RevealProps = {
     delay?: number;
 };
 
+/**
+ * Scroll-friendly entrance that never depends on opacity:0.
+ * Uses CSS animation so content stays readable if JS motion fails.
+ */
 export function Reveal({ children, className, delay = 0 }: RevealProps) {
     const prefersReducedMotion = useReducedMotion();
+    const shouldDelay = !prefersReducedMotion && delay > 0;
 
-    if (prefersReducedMotion) {
-        return <div className={className}>{children}</div>;
-    }
+    const style: CSSProperties | undefined = shouldDelay
+        ? { animationDelay: `${delay}s` }
+        : undefined;
 
     return (
-        <motion.div
-            className={className}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.12 }}
-            transition={{
-                duration: 0.55,
-                delay,
-                ease: [0.22, 1, 0.36, 1],
-            }}
+        <div
+            className={cn(
+                !prefersReducedMotion && "motion-safe:animate-rise",
+                className,
+            )}
+            style={style}
         >
             {children}
-        </motion.div>
+        </div>
     );
 }

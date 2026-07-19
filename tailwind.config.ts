@@ -80,10 +80,28 @@ const config = {
                     from: { height: "var(--radix-accordion-content-height)" },
                     to: { height: "0" },
                 },
+                // Transform-only — content stays readable if animation never runs
+                rise: {
+                    from: { transform: "translateY(18px)" },
+                    to: { transform: "translateY(0)" },
+                },
+                "fade-rise": {
+                    from: {
+                        opacity: "0.35",
+                        transform: "translateY(18px)",
+                    },
+                    to: {
+                        opacity: "1",
+                        transform: "translateY(0)",
+                    },
+                },
             },
             animation: {
                 "accordion-down": "accordion-down 0.2s ease-out",
                 "accordion-up": "accordion-up 0.2s ease-out",
+                rise: "rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both",
+                "fade-rise":
+                    "fade-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
             },
         },
     },
