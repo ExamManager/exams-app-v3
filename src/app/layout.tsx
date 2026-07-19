@@ -50,9 +50,13 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html
+            lang="en"
+            suppressHydrationWarning
+            className={`${fontSans.variable} ${fontHeading.variable}`}
+        >
             <body
-                className={`${fontSans.variable} ${fontHeading.variable} overflow-x-hidden font-sans antialiased`}
+                className={`${fontSans.className} overflow-x-hidden antialiased`}
             >
                 <Providers>
                     <DeprecationBanner />
