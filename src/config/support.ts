@@ -45,10 +45,10 @@ export const supportInfos: SupportInfo[] = [
         buttonText: "Contact org",
     },
     {
-        title: "Our Blog",
+        title: "Documentation",
         description:
-            "Read our blog to learn more about our products and the latest updates.",
-        buttonHref: `${siteUrls.blog}`,
-        buttonText: "Read Blog",
+            "Browse the docs for product overview and setup guidance.",
+        buttonHref: siteUrls.docs,
+        buttonText: "Read docs",
     },
 ];

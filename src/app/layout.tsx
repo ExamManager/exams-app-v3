@@ -1,4 +1,5 @@
 import React from "react";
+import type { Metadata } from "next";
 import Background from "@/components/background";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
@@ -8,10 +9,30 @@ import "@/styles/prism.css";
 import { fontHeading, fontSans } from "@/lib/fonts";
 import { Analytics } from "@vercel/analytics/react";
 
-export const metadata = {
-    title: "ExamManager",
+export const metadata: Metadata = {
+    metadataBase: new URL("https://exams-app-v3.vercel.app"),
+    title: {
+        default: "ExamManager V3",
+        template: "%s | ExamManager V3",
+    },
     description:
-        "ExamManager — exam timing and management SaaS built with Next.js, Tailwind CSS, and Drizzle.",
+        "ExamManager V3 — T3/Drizzle SaaS rewrite portfolio demo for exam timing and school management.",
+    applicationName: "ExamManager V3",
+    openGraph: {
+        type: "website",
+        locale: "en_US",
+        url: "https://exams-app-v3.vercel.app",
+        title: "ExamManager V3",
+        description:
+            "ExamManager V3 — T3/Drizzle SaaS rewrite portfolio demo for exam timing and school management.",
+        siteName: "ExamManager V3",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: "ExamManager V3",
+        description:
+            "ExamManager V3 — T3/Drizzle SaaS rewrite portfolio demo for exam timing and school management.",
+    },
     icons: {
         icon: [
             { url: "/favicon.ico", sizes: "any" },

@@ -3,7 +3,6 @@ import {
     HelpCircleIcon,
     LayoutDashboardIcon,
     MessageSquareIcon,
-    PenLineIcon,
     Settings2Icon,
     UserRoundCheckIcon,
     UserRoundPlusIcon,
@@ -150,11 +149,6 @@ const navigation: SidebarNavItems[] = [
                 label: "Docs",
                 icon: BookTextIcon,
                 href: siteUrls.docs,
-            },
-            {
-                label: "Blog",
-                icon: PenLineIcon,
-                href: siteUrls.blog,
             },
             {
                 label: "Support",

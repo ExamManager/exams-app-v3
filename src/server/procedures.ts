@@ -35,8 +35,11 @@ export const protectedProcedure = async () => {
 export const adminProcedure = async () => {
     const user = await getUser();
 
+    if (!user) {
+        throw new Error("You are not authenticated");
+    }
+
     if (
-        user &&
         user.role !== userRoles.Values.Admin &&
         user.role !== userRoles.Values["Super Admin"]
     ) {
@@ -56,7 +59,11 @@ export const adminProcedure = async () => {
 export const superAdminProcedure = async () => {
     const user = await getUser();
 
-    if (user && user.role !== userRoles.Values["Super Admin"]) {
+    if (!user) {
+        throw new Error("You are not authenticated");
+    }
+
+    if (user.role !== userRoles.Values["Super Admin"]) {
         throw new Error("You are not authorized to perform this action");
     }
 

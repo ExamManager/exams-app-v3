@@ -1,14 +1,5 @@
 /**
- * This file contains the pricing data for the pricing page.
- *
- * @add a new pricing plan, add a new object to the `pricing` array.
- * 1. Add id to the pricingIds object then use it as the id of the new pricing object.
- * 2. Add badge(optional), title, description, price, currency, duration, highlight, popular, and uniqueFeatures(optional) to the new pricing object.
- * 3. if the new pricing plan has unique features, add a new object to the `uniqueFeatures` array.
- *
- * @add a new feature, add a new object to the `features` array.
- * 1. Add id to the features object then use it as the id of the new feature object.
- * 2. Add title and inludedIn to the new feature object. (inludedIn is an array of pricing plan ids that include this feature)
+ * Canonical ExamManager pricing — aligned with V1 showcase plans.
  */
 
 export type Pricing = {
@@ -34,122 +25,118 @@ export type Feature = {
 };
 
 const pricingIds = {
-    free: "free",
-    pro: "pro",
-    premium: "premium",
+    standard: "standard",
+    basic: "basic",
+    professional: "professional",
 } as const;
 
 export const features: Feature[] = [
     {
         id: "1",
-        title: "SSO with unlimited social connections and MFA",
-        inludedIn: [pricingIds.free, pricingIds.pro, pricingIds.premium],
+        title: "Classroom exam timer",
+        inludedIn: [
+            pricingIds.standard,
+            pricingIds.basic,
+            pricingIds.professional,
+        ],
     },
     {
         id: "2",
-        title: "Custom domains",
-        inludedIn: [pricingIds.free, pricingIds.pro, pricingIds.premium],
+        title: "Time up to 3 exams simultaneously",
+        inludedIn: [
+            pricingIds.standard,
+            pricingIds.basic,
+            pricingIds.professional,
+        ],
     },
     {
         id: "3",
-        title: "Basic role and permission management",
-        inludedIn: [pricingIds.free, pricingIds.pro, pricingIds.premium],
+        title: "Advanced Analytical Tools",
+        inludedIn: [
+            pricingIds.standard,
+            pricingIds.basic,
+            pricingIds.professional,
+        ],
     },
     {
         id: "4",
-        title: "View and manage users",
-        inludedIn: [pricingIds.free, pricingIds.pro, pricingIds.premium],
+        title: "Exam Timetable Creation",
+        inludedIn: [pricingIds.basic, pricingIds.professional],
     },
     {
         id: "5",
-        title: "Custom Branding",
-        inludedIn: [pricingIds.pro, pricingIds.premium],
+        title: "Exam Seating Plan Creation",
+        inludedIn: [pricingIds.basic, pricingIds.professional],
+    },
+    {
+        id: "6",
+        title: "Custom Exam Presets for different subjects",
+        inludedIn: [pricingIds.basic, pricingIds.professional],
     },
     {
         id: "7",
-        title: "ExamManager Branding",
-        inludedIn: [pricingIds.pro, pricingIds.premium],
+        title: "Student Result Analysis",
+        inludedIn: [pricingIds.professional],
     },
     {
         id: "8",
-        title: "Custom Branding",
-        inludedIn: [pricingIds.pro, pricingIds.premium],
-    },
-    {
-        id: "9",
-        title: "Up to 2,000 machine to machine (M2M) connections",
-        inludedIn: [pricingIds.pro, pricingIds.premium],
-    },
-    {
-        id: "10",
-        title: "ExamManager Branding",
-        inludedIn: [pricingIds.premium],
-    },
-    {
-        id: "11",
-        title: "Custom Branding",
-        inludedIn: [pricingIds.premium],
-    },
-    {
-        id: "12",
-        title: "Up to 2,000 machine to machine (M2M) connections",
-        inludedIn: [pricingIds.premium],
-    },
-    {
-        id: "13",
-        title: "ExamManager Branding",
-        inludedIn: [pricingIds.premium],
+        title: "Advanced Exam planning and managing",
+        inludedIn: [pricingIds.professional],
     },
 ];
 
 export const pricings: Pricing[] = [
     {
-        id: pricingIds.free,
-        title: "Free",
-        description:
-            "Everything you need to get started with 10,500 free MAU. No setup fees, monthly fees, or hidden fees.",
+        id: pricingIds.standard,
+        title: "Standard",
+        description: "For personal use — get started with core exam timing.",
         price: 0,
-        currency: {
-            code: "USD",
-            symbol: "$",
-        },
-        duration: "Forever",
-        highlight:
-            "No credit card required. 30-day money-back guarantee. No hidden fees.",
+        currency: { code: "USD", symbol: "$" },
+        duration: "per month",
+        highlight: "No credit card required. Portfolio demo — billing disabled.",
         buttonHighlighted: false,
-        uniqueFeatures: ["Up to 2,000 machine to machine (M2M) connections"],
+        uniqueFeatures: [
+            "For Personal Use only",
+            "Time up to 3 exams simultaneously",
+            "Advanced Analytical Tools",
+            "Save exams up to 1 day ahead",
+        ],
     },
     {
-        id: pricingIds.pro,
-        badge: "Most Popular",
-        title: "Pro",
+        id: pricingIds.basic,
+        badge: "Most popular",
+        title: "Basic",
         description:
-            "Advanced features to help you scale any business without limits.",
-        price: 49,
-        currency: {
-            code: "USD",
-            symbol: "$",
-        },
+            "For schools with under 500 students — planning tools included.",
+        price: 9.99,
+        currency: { code: "USD", symbol: "$" },
         duration: "per month",
-        highlight:
-            "No credit card required. 30-day money-back guarantee. No hidden fees.",
+        highlight: "Most popular for small schools. Portfolio demo — billing disabled.",
         buttonHighlighted: true,
-        uniqueFeatures: ["Up to 5,000 machine to machine (M2M) connections"],
+        uniqueFeatures: [
+            "For Schools with under 500 Students",
+            "Basic Exam planning",
+            "Exam Timetable Creation",
+            "Exam Seating Plan Creation",
+            "Custom Exam Presets for different subjects",
+            "Save exams up to 1 month ahead",
+        ],
     },
     {
-        id: pricingIds.premium,
-        title: "Premium",
+        id: pricingIds.professional,
+        title: "Professional",
         description:
-            "For teams with more complex needs requiring the highest levels of support.",
-        price: 199,
-        currency: {
-            code: "USD",
-            symbol: "$",
-        },
+            "For schools with under 1000 students — advanced planning and analysis.",
+        price: 19.99,
+        currency: { code: "USD", symbol: "$" },
         duration: "per month",
-        highlight:
-            "No credit card required. 30-day money-back guarantee. No hidden fees.",
+        highlight: "Custom plans available from $39/mo. Portfolio demo — billing disabled.",
         buttonHighlighted: false,
-        uniqueFeatures: ["Up to 100,000 machine to machine (M2M) connections"],
+        uniqueFeatures: [
+            "For Schools with under 1000 Students",
+            "Advanced Exam planning and managing",
+            "Student Result Analysis",
+            "Save exams up to 1 year ahead",
+        ],
     },
 ];

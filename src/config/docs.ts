@@ -53,7 +53,7 @@ const nav: DocsSidebarNavItems[] = [
         items: [
             {
                 id: "introduction",
-                label: "What is ExamManager?",
+                label: "What is ExamManager V3?",
                 href: "/docs/introduction",
             },
         ],
@@ -66,43 +66,6 @@ const nav: DocsSidebarNavItems[] = [
                 id: "installation",
                 label: "Installation",
                 href: "/docs/getting-started/installation",
-            },
-        ],
-    },
-    {
-        id: "api",
-        label: "API",
-        items: [
-            {
-                id: "endpoints",
-                label: "Endpoints",
-                href: "/docs/api/endpoints",
-                badge: "Soon",
-                disabled: true,
-            },
-            {
-                id: "authentication",
-                label: "Authentication",
-                subItems: [
-                    {
-                        id: "sign-up",
-                        label: "Sign Up",
-                        href: "/docs/api/authentication/sign-up",
-                        disabled: true,
-                    },
-                    {
-                        id: "sign-in",
-                        label: "Sign In",
-                        href: "/docs/api/authentication/sign-in",
-                        disabled: true,
-                    },
-                    {
-                        id: "sign-out",
-                        label: "Sign Out",
-                        href: "/docs/api/authentication/sign-out",
-                        disabled: true,
-                    },
-                ],
             },
         ],
     },

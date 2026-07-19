@@ -11,7 +11,14 @@ import {
 } from "@/components/ui/card";
 import { type SupportInfo, supportInfos } from "@/config/support";
 import { ArrowRightIcon } from "lucide-react";
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+    title: "Support",
+    description:
+        "ExamManager V3 support — portfolio demo contact and help resources.",
+};
 
 export default function ContactPage() {
     return (

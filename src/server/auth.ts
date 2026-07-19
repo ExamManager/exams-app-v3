@@ -17,6 +17,7 @@ import GithubProvider from "next-auth/providers/github";
 
 import { sendVerificationEmail } from "@/server/actions/send-verification-email";
 import { env } from "@/env";
+import { AUTH_DISABLED } from "@/config/showcase";
 import { eq } from "drizzle-orm";
 
 /**
@@ -74,6 +75,13 @@ declare module "next-auth/jwt" {
  */
 export const authOptions: NextAuthOptions = {
     callbacks: {
+        async signIn() {
+            // Hard-disable authentication for the public portfolio showcase.
+            if (AUTH_DISABLED) {
+                return false;
+            }
+            return true;
+        },
         session({ token, session }) {
             if (token) {
                 // Add the user id to the session, so it's available in the client app
@@ -90,6 +98,10 @@ export const authOptions: NextAuthOptions = {
             return session;
         },
         async jwt({ token, user }) {
+            if (AUTH_DISABLED) {
+                return token;
+            }
+
             const dbUser = await db.query.users.findFirst({
                 where: eq(users.email, token.email!),
             });
@@ -125,30 +137,32 @@ export const authOptions: NextAuthOptions = {
         error: siteUrls.auth.login,
         verifyRequest: siteUrls.auth.login,
     },
-    providers: [
-        EmailProvider({
-            async sendVerificationRequest(params) {
-                return await sendVerificationEmail({ params });
-            },
-        }),
-        GoogleProvider({
-            clientId: env.GOOGLE_CLIENT_ID,
-            clientSecret: env.GOOGLE_CLIENT_SECRET,
-        }),
-        GithubProvider({
-            clientId: env.GITHUB_CLIENT_ID,
-            clientSecret: env.GITHUB_CLIENT_SECRET,
-        }),
-        /**
-         * ...add more providers here.
-         *
-         * Most other providers require a bit more work than the Discord provider. For example, the
-         * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
-         * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
-         *
-         * @see https://next-auth.js.org/providers/github
-         */
-    ],
+    providers: AUTH_DISABLED
+        ? []
+        : [
+              EmailProvider({
+                  async sendVerificationRequest(params) {
+                      return await sendVerificationEmail({ params });
+                  },
+              }),
+              GoogleProvider({
+                  clientId: env.GOOGLE_CLIENT_ID,
+                  clientSecret: env.GOOGLE_CLIENT_SECRET,
+              }),
+              GithubProvider({
+                  clientId: env.GITHUB_CLIENT_ID,
+                  clientSecret: env.GITHUB_CLIENT_SECRET,
+              }),
+              /**
+               * ...add more providers here.
+               *
+               * Most other providers require a bit more work than the Discord provider. For example, the
+               * GitHub provider requires you to add the `refresh_token_expires_in` field to the Account
+               * model. Refer to the NextAuth.js docs for the provider you want to use. Example:
+               *
+               * @see https://next-auth.js.org/providers/github
+               */
+          ],
 };
 
 /**

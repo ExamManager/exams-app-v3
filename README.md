@@ -1,27 +1,32 @@
-# ExamManager v3
+# ExamManager v3 (deprecated portfolio demo)
 
-T3 / Drizzle SaaS rewrite of ExamManager — organizations, billing, admin, docs, and exam surfaces.
+Public showcase of an earlier ExamManager SaaS rewrite. **Not an active product.**
 
-Latest architecture in the ExamManager portfolio.
+**Auth is disabled** on the live demo (`AUTH_DISABLED` defaults on). Sign-in / signup will not succeed.
+
+Live: [exams-app-v3.vercel.app](https://exams-app-v3.vercel.app)
+
+## Working public routes
+
+| Route | Notes |
+| --- | --- |
+| `/` | Marketing home |
+| `/pricing` | Pricing table (demo CTAs only) |
+| `/support` | Support links |
+| `/docs` | MDX documentation |
+
+Protected app routes (`/dashboard`, `/exams`, `/feedback`, `/admin`, etc.) require a session and are not available on the public showcase.
 
 ## Stack
 
 - Next.js App Router and React
 - TypeScript, Tailwind CSS
 - Drizzle ORM + Postgres
-- NextAuth.js
+- NextAuth.js (disabled in showcase mode)
 - Stripe subscriptions
 - Resend email
 - UploadThing
 - Yarn
-
-## Features
-
-- Multi-org accounts and invites
-- Stripe billing tiers
-- Admin and feedback flows
-- MDX documentation
-- Exam management UI (evolving)
 
 ## Local development
 
@@ -34,11 +39,14 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000). Optional local Postgres helper: `./start-database.sh`.
 
+To re-enable auth locally, set `AUTH_DISABLED=false` and `NEXT_PUBLIC_AUTH_DISABLED=false` in `.env`.
+
 ## Environment
 
 See `.env.example` and `src/env.js` for the full schema. Typical groups:
 
 - `DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`
+- `AUTH_DISABLED` / `NEXT_PUBLIC_AUTH_DISABLED` (showcase defaults to disabled)
 - Google / GitHub OAuth client IDs and secrets
 - `RESEND_API_KEY`, Stripe keys, UploadThing keys
 

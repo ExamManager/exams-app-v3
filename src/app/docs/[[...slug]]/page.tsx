@@ -1,4 +1,5 @@
 import { notFound, redirect } from "next/navigation";
+import type { Metadata } from "next";
 import { Toc } from "@/components/toc";
 import { getMDXData } from "@/lib/mdx";
 
@@ -19,6 +20,27 @@ export async function generateStaticParams() {
     return docs.map((doc) => ({
         slug: doc.metaData.slug.split("/"),
     }));
+}
+
+export async function generateMetadata({
+    params,
+}: DocsSlugPageProps): Promise<Metadata> {
+    if (!params.slug) {
+        return { title: "Docs" };
+    }
+
+    const doc = (await getDocs()).find(
+        (entry) => entry.metaData.slug === params.slug.join("/"),
+    );
+
+    if (!doc) {
+        return { title: "Docs" };
+    }
+
+    return {
+        title: doc.metaData.title,
+        description: doc.metaData.description,
+    };
 }
 
 export default async function DocsSlugPage({ params }: DocsSlugPageProps) {

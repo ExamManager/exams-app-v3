@@ -26,17 +26,11 @@ export const navigation: NavigationItem[] = [
         id: "pricing",
         href: siteUrls.pricing,
         label: "Pricing",
-        badge: "Beta",
     },
     {
         id: "support",
         href: siteUrls.support,
         label: "Support",
-    },
-    {
-        id: "blog",
-        href: siteUrls.blog,
-        label: "Blog",
     },
     {
         id: "docs",

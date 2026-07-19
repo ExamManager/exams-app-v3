@@ -1,11 +1,13 @@
 import { getToken } from "next-auth/jwt";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
+import { AUTH_DISABLED } from "@/config/showcase";
 import { siteUrls } from "@/config/urls";
 import { getAbsoluteUrl } from "@/lib/utils";
 
 export async function middleware(request: NextRequest) {
-    const session = await getToken({ req: request });
+    // Showcase mode: ignore any existing JWT so protected routes stay closed.
+    const session = AUTH_DISABLED ? null : await getToken({ req: request });
 
     /** if path name starts from /auth, and session is there redirect to dashboard */
     if (session && request.nextUrl.pathname.startsWith("/auth")) {
@@ -40,5 +42,7 @@ export const config = {
         "/org/:path*",
         "/invite/:path*",
         "/admin/:path*",
+        "/exams/:path*",
+        "/feedback/:path*",
     ],
 };

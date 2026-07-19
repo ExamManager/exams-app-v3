@@ -1,19 +1,47 @@
 ---
 title: "Installation"
 slug: "getting-started/installation"
-description: "Learn how to install ExamManager"
+description: "Run the ExamManager V3 portfolio demo locally from the open-source repo."
 ---
 
-Add your own documentation by creating a `.mdx` file in the `src/content/docs` folder.
+ExamManager V3 is a **portfolio showcase** of an earlier T3/Drizzle SaaS rewrite. Auth and billing stay disabled on the public demo. Use these steps only if you want to explore the codebase locally.
 
-<Steps>
+## Prerequisites
 
-<Step>Step - 1</Step>
+- Node.js 18+
+- Yarn 1.x
+- Optional: Postgres if you re-enable database-backed features
 
-This is the content of step 1
+## Clone and install
 
-<Step> Step - 2 </Step>
+```bash
+git clone https://github.com/ExamManager/exams-app-v3.git
+cd exams-app-v3
+yarn install
+```
 
-This is the content of step 2
+## Environment
 
-</Steps>
+Copy the example env and fill in any values you need for local exploration:
+
+```bash
+cp .env.example .env.local
+```
+
+For the public showcase defaults, leave auth disabled (do not set `AUTH_DISABLED=false` unless you intentionally re-enable NextAuth).
+
+## Start the app
+
+```bash
+yarn dev
+```
+
+Open [http://localhost:3000](http://localhost:3000). You should see ExamManager V3 branding, the deprecation banner, and the same public routes as production (`/`, `/pricing`, `/support`, `/docs`, `/auth/*`).
+
+## What works in showcase mode
+
+- Marketing pages and docs
+- Pricing table (illustrative plans only)
+- Auth screens with a clear disabled notice
+
+Sign-in, signup, and Stripe checkout are not available on the live portfolio deployment.

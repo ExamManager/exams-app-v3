@@ -9,8 +9,11 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { CheckIcon, XIcon } from "lucide-react";
-import { type Pricing, pricings, features } from "@/config/pricing";
+import { CheckIcon } from "lucide-react";
+import Link from "next/link";
+import { type Pricing, pricings } from "@/config/pricing";
+import { AUTH_DISABLED } from "@/config/showcase";
+import { siteUrls } from "@/config/urls";
 import { cn } from "@/lib/utils";
 
 /**
@@ -70,15 +73,28 @@ function PricingCard({ pricing }: PricingCardProps) {
                 <CardDescription className="font-light">
                     {pricing.highlight}
                 </CardDescription>
-                <Button
-                    size="lg"
-                    className="w-full"
-                    variant={
-                        pricing.buttonHighlighted ? "default" : "secondary"
-                    }
-                >
-                    Get Started
-                </Button>
+                {AUTH_DISABLED ? (
+                    <Button
+                        size="lg"
+                        className="w-full"
+                        variant={
+                            pricing.buttonHighlighted ? "default" : "secondary"
+                        }
+                        asChild
+                    >
+                        <Link href={siteUrls.auth.login}>Demo only</Link>
+                    </Button>
+                ) : (
+                    <Button
+                        size="lg"
+                        className="w-full"
+                        variant={
+                            pricing.buttonHighlighted ? "default" : "secondary"
+                        }
+                    >
+                        Get Started
+                    </Button>
+                )}
 
                 <div className="flex flex-col gap-4 pt-10">
                     <p className="text-sm font-medium">
@@ -92,29 +108,6 @@ function PricingCard({ pricing }: PricingCardProps) {
                             >
                                 <CheckIcon className="h-5 w-5 flex-shrink-0" />
                                 <span className="text-sm">{feature}</span>
-                            </li>
-                        ))}
-
-                        {features.map((feature) => (
-                            <li
-                                key={feature.id}
-                                className="flex items-start gap-3"
-                            >
-                                {feature.inludedIn.includes(pricing.id) ? (
-                                    <CheckIcon className="h-5 w-5 flex-shrink-0" />
-                                ) : (
-                                    <XIcon className="h-5 w-5 flex-shrink-0 text-muted-foreground/60" />
-                                )}
-                                <span
-                                    className={cn(
-                                        "text-sm",
-                                        !feature.inludedIn.includes(pricing.id)
-                                            ? "text-muted-foreground/60"
-                                            : "",
-                                    )}
-                                >
-                                    {feature.title}
-                                </span>
                             </li>
                         ))}
                     </ul>
