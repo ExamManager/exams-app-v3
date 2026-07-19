@@ -52,7 +52,10 @@ function TimerShowcase() {
                     <Reveal delay={0.08}>
                         <div className="max-w-lg space-y-5 lg:pl-2">
                             <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-brand/35 bg-brand/10 text-brand">
-                                <Clock3 className="h-5 w-5" strokeWidth={1.75} />
+                                <Clock3
+                                    className="h-5 w-5"
+                                    strokeWidth={1.75}
+                                />
                             </div>
                             <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
                                 A classroom timer students can trust
@@ -247,39 +250,59 @@ function HowItWorks() {
     return (
         <section className="border-t border-border/70 py-20 md:py-28">
             <div className="container max-w-[1400px] px-4 sm:px-6 lg:px-8">
-                <Reveal>
-                    <div className="mb-12 max-w-xl space-y-3">
-                        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-                            How it works
-                        </h2>
-                        <p className="text-base text-muted-foreground sm:text-lg">
-                            From plan to quiet, on-time rooms.
-                        </p>
-                    </div>
-                </Reveal>
+                <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
+                    <Reveal>
+                        <div className="sticky top-28 max-w-md space-y-6">
+                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+                                How it works
+                            </h2>
+                            <p className="text-base text-muted-foreground sm:text-lg">
+                                From plan to quiet, on-time rooms in three
+                                clear moves.
+                            </p>
+                            <ol className="space-y-6">
+                                {steps.map((step, index) => (
+                                    <li
+                                        key={step.title}
+                                        className="border-l-2 border-brand/50 pl-4"
+                                    >
+                                        <p className="font-heading text-lg font-semibold tracking-tight">
+                                            <span className="mr-2 text-brand">
+                                                {index + 1}.
+                                            </span>
+                                            {step.title}
+                                        </p>
+                                        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
+                                            {step.description}
+                                        </p>
+                                    </li>
+                                ))}
+                            </ol>
+                        </div>
+                    </Reveal>
 
-                <div className="grid gap-6 md:grid-cols-3 md:gap-5">
-                    {steps.map((step, index) => (
-                        <Reveal key={step.title} delay={index * 0.07}>
-                            <div className="flex h-full flex-col border-t border-brand/40 pt-6">
-                                <p className="font-heading text-3xl font-semibold tracking-tight text-brand">
-                                    {step.title}
-                                </p>
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground sm:text-base">
-                                    {step.description}
-                                </p>
-                                <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-lg border border-border/70 bg-muted/20">
-                                    <Image
-                                        src={step.image}
-                                        alt={step.alt}
-                                        fill
-                                        className="object-cover object-top"
-                                        sizes="(max-width: 768px) 100vw, 33vw"
-                                    />
+                    <div className="space-y-5">
+                        {steps.map((step, index) => (
+                            <Reveal key={step.title} delay={index * 0.06}>
+                                <div className="overflow-hidden rounded-xl border border-border/80 bg-background">
+                                    <div className="border-b border-border/70 px-4 py-2.5">
+                                        <span className="text-sm font-medium text-foreground">
+                                            {step.title}
+                                        </span>
+                                    </div>
+                                    <div className="relative aspect-[16/10]">
+                                        <Image
+                                            src={step.image}
+                                            alt={step.alt}
+                                            fill
+                                            className="object-cover object-top"
+                                            sizes="(max-width: 1024px) 100vw, 55vw"
+                                        />
+                                    </div>
                                 </div>
-                            </div>
-                        </Reveal>
-                    ))}
+                            </Reveal>
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>
@@ -297,7 +320,7 @@ function PricingTeaser() {
                                 Simple plans for school teams
                             </h2>
                             <p className="text-base text-muted-foreground">
-                                Standard, Basic, and Professional - illustrative
+                                Standard, Basic, and Professional. Illustrative
                                 for this portfolio showcase.
                                 {AUTH_DISABLED
                                     ? " Billing stays disabled."
@@ -308,7 +331,7 @@ function PricingTeaser() {
                             href={siteUrls.pricing}
                             className={cn(
                                 buttonVariants({ variant: "outline" }),
-                                "w-fit",
+                                "w-fit active:scale-[0.98]",
                             )}
                         >
                             Compare plans
@@ -328,7 +351,7 @@ function PricingTeaser() {
                                 )}
                             >
                                 {plan.badge ? (
-                                    <span className="absolute -top-2.5 left-5 rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-medium text-amber-950">
+                                    <span className="absolute -top-2.5 left-5 rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-medium text-brand-foreground">
                                         {plan.badge}
                                     </span>
                                 ) : null}
@@ -364,33 +387,29 @@ function ClosingCta() {
                             aria-hidden
                             className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(255,176,0,0.16),transparent_50%),radial-gradient(ellipse_at_90%_100%,rgba(255,176,0,0.08),transparent_45%)]"
                         />
+                        <div
+                            aria-hidden
+                            className="pointer-events-none absolute inset-0 bg-[url('/marketing/classroom.png')] bg-cover bg-center opacity-[0.06] dark:opacity-[0.1]"
+                        />
                         <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
                             <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
                                 Explore ExamManager
                             </h2>
                             <p className="mt-3 max-w-lg text-base text-muted-foreground">
-                                Read the docs or browse the open source on
-                                GitHub. Signup stays off for this showcase.
+                                Browse the open source on GitHub. Signup stays
+                                off for this portfolio showcase.
                             </p>
-                            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-                                <Link
-                                    href={siteUrls.features}
-                                    className={cn(buttonVariants({ size: "lg" }))}
-                                >
-                                    Explore features
-                                </Link>
+                            <div className="mt-8">
                                 <Link
                                     href={siteUrls.github}
                                     target="_blank"
                                     rel="noreferrer"
                                     className={cn(
-                                        buttonVariants({
-                                            size: "lg",
-                                            variant: "outline",
-                                        }),
+                                        buttonVariants({ size: "lg" }),
+                                        "active:scale-[0.98]",
                                     )}
                                 >
-                                    GitHub
+                                    View on GitHub
                                 </Link>
                             </div>
                         </div>

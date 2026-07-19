@@ -1,15 +1,5 @@
 /**
  * @purpose Contains the support information for the support section.
- * The supportInfo array contains the support information for the support section.
- * Each object in the array contains the following properties:
- * - title: The title for the support information.
- * - description: The description for the support information.
- * - email: (Optional) The email address for the support information.
- * - buttonHref: The URL for the button.
- * - buttonText: The text for the button.
- *
- * After it will be used in the support section of the landing page. @see (websiteUrl)/support
- * You can modify support UI by modifying this file. @see /app/(web)/support/page.tsx
  */
 
 import { siteUrls } from "@/config/urls";
@@ -24,31 +14,24 @@ export type SupportInfo = {
 
 export const supportInfos: SupportInfo[] = [
     {
-        title: "Say Hello",
+        title: "GitHub",
         description:
-            "Get in touch with us to learn more about ExamManager.",
+            "Browse the ExamManager repositories and past work on GitHub.",
         buttonHref: siteUrls.github,
         buttonText: "Open GitHub",
     },
     {
-        title: "Tech Support",
+        title: "Issues",
         description:
-            "Get help with technical issues. Open an issue or discussion on GitHub.",
+            "Report a problem or ask a technical question on the V3 repo.",
         buttonHref: `${siteUrls.github}/exams-app-v3/issues`,
         buttonText: "Get help",
     },
     {
-        title: "Sales",
+        title: "Features",
         description:
-            "Questions about plans or enterprise use? Reach out via the org on GitHub.",
-        buttonHref: siteUrls.github,
-        buttonText: "Contact org",
-    },
-    {
-        title: "Documentation",
-        description:
-            "Browse the docs for product overview and setup guidance.",
-        buttonHref: siteUrls.docs,
-        buttonText: "Read docs",
+            "See classroom timers, sessions, seating, and planning in detail.",
+        buttonHref: siteUrls.features,
+        buttonText: "Explore features",
     },
 ];

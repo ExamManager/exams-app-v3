@@ -1,14 +1,4 @@
-import {
-    WebPageHeading,
-    WebPageWrapper,
-} from "@/app/(web)/_components/general-components";
 import { buttonVariants } from "@/components/ui/button";
-import {
-    Card,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
 import { type SupportInfo, supportInfos } from "@/config/support";
 import { ArrowRightIcon } from "lucide-react";
 import type { Metadata } from "next";
@@ -22,20 +12,36 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
     return (
-        <WebPageWrapper>
-            <WebPageHeading title="Help when exam week gets busy">
-                <p className="max-w-xl text-center text-muted-foreground">
-                    Reach the ExamManager team for questions about timers,
-                    planning, or this portfolio showcase.
-                </p>
-            </WebPageHeading>
+        <main className="relative">
+            <section className="relative overflow-hidden border-b border-border/70">
+                <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_50%_0%,rgba(255,176,0,0.12),transparent_55%)]"
+                />
+                <div className="relative container max-w-[1400px] px-4 pb-12 pt-16 sm:px-6 sm:pt-20 lg:px-8">
+                    <div className="mx-auto max-w-2xl space-y-4 text-center">
+                        <p className="font-heading text-4xl font-bold tracking-tight text-brand sm:text-5xl">
+                            ExamManager
+                        </p>
+                        <h1 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+                            Help when exam week gets busy
+                        </h1>
+                        <p className="mx-auto max-w-xl text-base text-muted-foreground">
+                            Reach the ExamManager team for questions about
+                            timers, planning, or this portfolio showcase.
+                        </p>
+                    </div>
+                </div>
+            </section>
 
-            <div className="grid max-w-4xl grid-cols-1 gap-5 sm:grid-cols-2">
-                {supportInfos.map((supportInfo) => (
-                    <SupportCard key={supportInfo.title} {...supportInfo} />
-                ))}
-            </div>
-        </WebPageWrapper>
+            <section className="py-16 md:py-20">
+                <div className="container mx-auto grid max-w-5xl grid-cols-1 gap-5 px-4 sm:grid-cols-3 sm:px-6">
+                    {supportInfos.map((supportInfo) => (
+                        <SupportCard key={supportInfo.title} {...supportInfo} />
+                    ))}
+                </div>
+            </section>
+        </main>
     );
 }
 
@@ -47,25 +53,31 @@ function SupportCard({
     email,
 }: SupportInfo) {
     return (
-        <Card>
-            <CardHeader className="flex h-full flex-col items-start justify-between gap-3">
-                <div className="flex flex-col gap-2">
-                    <CardTitle>{title}</CardTitle>
-                    <CardDescription>{description}</CardDescription>
-                    {email && <p className="text-base text-primary">{email}</p>}
-                </div>
-                <Link
-                    href={buttonHref}
-                    className={buttonVariants({
-                        className:
-                            "w-fit gap-1 transition-all duration-300 ease-in-out hover:gap-3",
-                        variant: "secondary",
-                    })}
-                >
-                    <span>{buttonText}</span>
-                    <ArrowRightIcon className="h-4 w-4" />
-                </Link>
-            </CardHeader>
-        </Card>
+        <div className="flex h-full flex-col justify-between gap-6 border border-border/80 bg-background p-6">
+            <div className="space-y-2">
+                <h2 className="font-heading text-xl font-semibold tracking-tight">
+                    {title}
+                </h2>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                    {description}
+                </p>
+                {email ? (
+                    <p className="pt-1 text-sm font-medium text-foreground">
+                        {email}
+                    </p>
+                ) : null}
+            </div>
+            <Link
+                href={buttonHref}
+                className={buttonVariants({
+                    className:
+                        "w-fit gap-1 transition-all duration-300 ease-in-out hover:gap-3 active:scale-[0.98]",
+                    variant: "outline",
+                })}
+            >
+                <span>{buttonText}</span>
+                <ArrowRightIcon className="h-4 w-4" strokeWidth={1.75} />
+            </Link>
+        </div>
     );
 }

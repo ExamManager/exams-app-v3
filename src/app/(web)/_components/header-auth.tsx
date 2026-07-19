@@ -6,10 +6,10 @@ import Link from "next/link";
 
 export async function HeaderAuth() {
     let user = null;
+
     try {
         user = await getUser();
     } catch {
-        // Auth misconfiguration (e.g. missing NEXTAUTH_SECRET) should not blank the marketing site.
         user = null;
     }
 
@@ -26,13 +26,13 @@ export async function HeaderAuth() {
                 </Link>
             ) : AUTH_DISABLED ? (
                 <Link
-                    href={siteUrls.auth.login}
+                    href={siteUrls.docs}
                     className={buttonVariants({
-                        variant: "secondary",
-                        className: "flex items-center space-x-1",
+                        className: "flex items-center space-x-1 max-sm:px-3",
                     })}
                 >
-                    <span>Demo only</span>
+                    <span className="sm:hidden">Docs</span>
+                    <span className="hidden sm:inline">View docs</span>
                 </Link>
             ) : (
                 <Link

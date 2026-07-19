@@ -14,15 +14,15 @@ export function HomeHero() {
         <section className="relative min-h-[100dvh] overflow-hidden">
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_75%_15%,rgba(255,176,0,0.18),transparent_55%),radial-gradient(ellipse_45%_35%_at_8%_85%,rgba(255,176,0,0.07),transparent_50%)]"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_78%_12%,rgba(255,176,0,0.2),transparent_55%),radial-gradient(ellipse_40%_30%_at_6%_90%,rgba(255,176,0,0.08),transparent_50%)]"
             />
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.5)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.5)_1px,transparent_1px)] bg-[size:44px_44px] [mask-image:radial-gradient(ellipse_75%_65%_at_55%_35%,black,transparent)]"
+                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.45)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.45)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_70%_60%_at_60%_30%,black,transparent)]"
             />
 
-            <div className="relative container flex min-h-[calc(100dvh-8rem)] max-w-[1400px] flex-col justify-start gap-8 px-4 pb-14 pt-8 md:gap-10 md:pt-10 lg:grid lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:items-start lg:gap-10 lg:pb-16 lg:pt-12">
-                <div className="relative z-10 max-w-xl space-y-5">
+            <div className="relative container flex min-h-[calc(100dvh-7.5rem)] max-w-[1400px] flex-col justify-start gap-8 px-4 pb-12 pt-10 md:gap-10 md:pt-12 lg:grid lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.28fr)] lg:items-start lg:gap-12 lg:pb-16 lg:pt-14">
+                <div className="relative z-10 max-w-xl space-y-6">
                     <motion.div
                         initial={
                             prefersReducedMotion
@@ -34,7 +34,7 @@ export function HomeHero() {
                             duration: 0.55,
                             ease: [0.22, 1, 0.36, 1],
                         }}
-                        className="space-y-3"
+                        className="space-y-4"
                     >
                         <p className="font-heading text-4xl font-bold tracking-tight text-brand sm:text-5xl md:text-6xl">
                             ExamManager
@@ -63,10 +63,13 @@ export function HomeHero() {
                         className="flex flex-wrap items-center gap-3"
                     >
                         <Link
-                            href={siteUrls.docs}
-                            className={cn(buttonVariants({ size: "lg" }))}
+                            href={siteUrls.features}
+                            className={cn(
+                                buttonVariants({ size: "lg" }),
+                                "active:scale-[0.98]",
+                            )}
                         >
-                            View docs
+                            Explore features
                         </Link>
                         <Link
                             href={siteUrls.pricing}
@@ -75,6 +78,7 @@ export function HomeHero() {
                                     size: "lg",
                                     variant: "outline",
                                 }),
+                                "active:scale-[0.98]",
                             )}
                         >
                             See pricing
@@ -96,7 +100,7 @@ export function HomeHero() {
                 >
                     <div
                         aria-hidden
-                        className="absolute -inset-8 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(255,176,0,0.32),transparent_65%)] blur-2xl"
+                        className="absolute -inset-8 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(255,176,0,0.34),transparent_65%)] blur-2xl"
                     />
                     <ProductFrame
                         src="/marketing/hero-overview.png"

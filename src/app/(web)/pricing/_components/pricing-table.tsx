@@ -1,30 +1,16 @@
 "use client";
 
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { CheckIcon } from "lucide-react";
 import Link from "next/link";
+import { CheckIcon } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { buttonVariants } from "@/components/ui/button";
 import { type Pricing, pricings } from "@/config/pricing";
-import { AUTH_DISABLED } from "@/config/showcase";
 import { siteUrls } from "@/config/urls";
 import { cn } from "@/lib/utils";
 
-/**
- * This is a customizable design for pricing plans. You can customize the design to your needs.
- *
- * @introduce a new pricing plan, please refer to @see /config/pricing.ts
- */
-
 export function PricingTable() {
     return (
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid w-full gap-5 md:grid-cols-3">
             {pricings.map((pricing) => (
                 <PricingCard key={pricing.id} pricing={pricing} />
             ))}
@@ -38,81 +24,72 @@ type PricingCardProps = {
 
 function PricingCard({ pricing }: PricingCardProps) {
     return (
-        <Card
+        <div
             className={cn(
-                "relative px-6 py-20",
-                pricing.buttonHighlighted && "border-2 border-primary",
+                "relative flex h-full flex-col border border-border/80 bg-background px-6 py-8",
+                pricing.buttonHighlighted &&
+                    "border-brand/60 shadow-[0_0_0_1px_rgba(255,176,0,0.14)]",
             )}
         >
-            {pricing.badge && (
-                <Badge
-                    variant="secondary"
-                    className="absolute inset-x-10 bottom-auto top-12 w-fit"
-                >
+            {pricing.badge ? (
+                <Badge className="absolute -top-2.5 left-6 border-0 bg-brand px-2.5 py-0.5 text-[11px] font-medium text-brand-foreground hover:bg-brand">
                     {pricing.badge}
                 </Badge>
-            )}
+            ) : null}
 
-            <CardHeader>
-                <CardTitle className="font-heading text-2xl font-bold">
+            <div className="space-y-2">
+                <p className="text-sm font-medium text-muted-foreground">
                     {pricing.title}
-                </CardTitle>
-                <CardDescription>{pricing.description}</CardDescription>
-            </CardHeader>
-
-            <CardContent className="flex flex-col gap-5">
-                <p className="flex items-end gap-2">
-                    <span className="text-4xl font-medium">
-                        {pricing.currency.symbol}
-                        {pricing.price}
-                    </span>
-                    <span className="font-light text-muted-foreground">
-                        {pricing.currency.code} {pricing.duration}
+                </p>
+                <p className="font-heading text-4xl font-semibold tracking-tight">
+                    {pricing.currency.symbol}
+                    {pricing.price === 0 ? "0" : pricing.price}
+                    <span className="ml-1 text-sm font-normal text-muted-foreground">
+                        /mo
                     </span>
                 </p>
-                <CardDescription className="font-light">
-                    {pricing.highlight}
-                </CardDescription>
-                {AUTH_DISABLED ? (
-                    <Button
-                        size="lg"
-                        className="w-full"
-                        variant={
-                            pricing.buttonHighlighted ? "default" : "secondary"
-                        }
-                        asChild
-                    >
-                        <Link href={siteUrls.auth.login}>Demo only</Link>
-                    </Button>
-                ) : (
-                    <Button
-                        size="lg"
-                        className="w-full"
-                        variant={
-                            pricing.buttonHighlighted ? "default" : "secondary"
-                        }
-                    >
-                        Get Started
-                    </Button>
-                )}
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                    {pricing.description}
+                </p>
+            </div>
 
-                <div className="flex flex-col gap-4 pt-10">
-                    <p className="text-sm font-medium">
-                        What’s included in {pricing.title}:
-                    </p>
-                    <ul className="flex flex-col gap-2">
-                        {pricing.uniqueFeatures?.map((feature, index) => (
-                            <li
-                                key={feature + " " + index}
-                                className="flex items-start gap-3"
-                            >
-                                <CheckIcon className="h-5 w-5 flex-shrink-0" />
-                                <span className="text-sm">{feature}</span>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            </CardContent>
-        </Card>
+            <p className="mt-5 text-xs leading-relaxed text-muted-foreground/90">
+                {pricing.highlight}
+            </p>
+
+            <Link
+                href={siteUrls.features}
+                className={cn(
+                    buttonVariants({
+                        size: "lg",
+                        variant: pricing.buttonHighlighted
+                            ? "default"
+                            : "outline",
+                    }),
+                    "mt-6 w-full active:scale-[0.98]",
+                )}
+            >
+                Explore features
+            </Link>
+
+            <div className="mt-8 border-t border-border/70 pt-6">
+                <p className="mb-4 text-sm font-medium">
+                    Included in {pricing.title}
+                </p>
+                <ul className="flex flex-col gap-2.5">
+                    {pricing.uniqueFeatures?.map((feature) => (
+                        <li key={feature} className="flex items-start gap-2.5">
+                            <CheckIcon
+                                className="mt-0.5 h-4 w-4 shrink-0 text-brand"
+                                strokeWidth={1.75}
+                            />
+                            <span className="text-sm text-muted-foreground">
+                                {feature}
+                            </span>
+                        </li>
+                    ))}
+                </ul>
+            </div>
+        </div>
     );
 }
