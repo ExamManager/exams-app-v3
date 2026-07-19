@@ -12,12 +12,15 @@ export const metadata = {
     title: "ExamManager",
     description:
         "ExamManager — exam timing and management SaaS built with Next.js, Tailwind CSS, and Drizzle.",
-    icons: [
-        { rel: "icon", url: "/favicon.ico" },
-        { rel: "icon", type: "image/svg+xml", url: "/favicon.svg" },
-        { rel: "icon", type: "image/png", sizes: "32x32", url: "/icon.png" },
-        { rel: "apple-touch-icon", url: "/apple-touch-icon.png" },
-    ],
+    icons: {
+        icon: [
+            { url: "/favicon.ico", sizes: "any" },
+            { url: "/favicon.svg", type: "image/svg+xml" },
+            { url: "/icon.png", type: "image/png", sizes: "32x32" },
+        ],
+        shortcut: "/favicon.ico",
+        apple: "/apple-touch-icon.png",
+    },
 };
 
 export default function RootLayout({
