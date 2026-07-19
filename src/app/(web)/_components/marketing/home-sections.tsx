@@ -214,6 +214,7 @@ function HowItWorks() {
                 "Define the paper, duration, reading time, and extra time before exam day.",
             image: "/marketing/create-exam.png",
             alt: "Create exam form with timing options",
+            object: "object-top",
         },
         {
             title: "Run",
@@ -221,6 +222,7 @@ function HowItWorks() {
                 "Open the classroom display and start each paper when the room is ready.",
             image: "/marketing/planning.png",
             alt: "Live session board with clock and paper statuses",
+            object: "object-top",
         },
         {
             title: "Review",
@@ -228,68 +230,73 @@ function HowItWorks() {
                 "Return to the exams list, tidy what ran, and prepare the next session.",
             image: "/marketing/hero-overview.png",
             alt: "Exams overview after a session",
+            object: "object-left-top",
         },
     ] as const;
 
     return (
         <section className="border-t border-border/70 py-20 md:py-28">
             <div className="container max-w-[1400px] px-4 sm:px-6 lg:px-8">
-                <div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-                    <Reveal>
-                        <div className="sticky top-28 max-w-md space-y-6">
-                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-                                How it works
-                            </h2>
-                            <p className="text-base text-foreground/70 sm:text-lg">
-                                From setup to a quiet, on-time room in three
-                                clear moves.
-                            </p>
-                            <ol className="space-y-6">
-                                {steps.map((step, index) => (
-                                    <li
-                                        key={step.title}
-                                        className="border-l-2 border-brand/55 pl-4"
-                                    >
-                                        <p className="font-heading text-lg font-semibold tracking-tight">
-                                            <span className="mr-2 text-brand">
-                                                {index + 1}.
-                                            </span>
-                                            {step.title}
+                <Reveal>
+                    <div className="mb-14 max-w-2xl space-y-3 md:mb-20">
+                        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+                            How it works
+                        </h2>
+                        <p className="text-base text-foreground/70 sm:text-lg">
+                            From setup to a quiet, on-time room in three clear
+                            moves.
+                        </p>
+                    </div>
+                </Reveal>
+
+                <div className="space-y-16 md:space-y-24">
+                    {steps.map((step, index) => {
+                        const reverse = index % 2 === 1;
+
+                        return (
+                            <Reveal key={step.title} delay={index * 0.05}>
+                                <div
+                                    className={cn(
+                                        "grid items-center gap-8 lg:grid-cols-2 lg:gap-16",
+                                        reverse && "lg:[&>*:first-child]:order-2",
+                                    )}
+                                >
+                                    <div className="relative">
+                                        <div
+                                            aria-hidden
+                                            className="absolute -inset-4 rounded-2xl bg-[radial-gradient(ellipse_at_center,rgba(255,176,0,0.14),transparent_65%)] blur-xl"
+                                        />
+                                        <div className="relative overflow-hidden rounded-xl border border-border/80 bg-background shadow-[0_24px_60px_-32px_rgba(0,0,0,0.4)]">
+                                            <div className="relative aspect-[16/10] bg-muted/20">
+                                                <Image
+                                                    src={step.image}
+                                                    alt={step.alt}
+                                                    fill
+                                                    className={cn(
+                                                        "object-cover",
+                                                        step.object,
+                                                    )}
+                                                    sizes="(max-width: 1024px) 100vw, 50vw"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className="relative max-w-md space-y-4 lg:px-2">
+                                        <p className="font-heading text-5xl font-bold tracking-tight text-brand/90 sm:text-6xl">
+                                            {String(index + 1).padStart(2, "0")}
                                         </p>
-                                        <p className="mt-1.5 text-sm leading-relaxed text-foreground/65">
+                                        <h3 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
+                                            {step.title}
+                                        </h3>
+                                        <p className="text-base leading-relaxed text-foreground/70 sm:text-lg">
                                             {step.description}
                                         </p>
-                                    </li>
-                                ))}
-                            </ol>
-                        </div>
-                    </Reveal>
-
-                    <div className="space-y-5">
-                        {steps.map((step, index) => (
-                            <Reveal key={step.title} delay={index * 0.06}>
-                                <div className="overflow-hidden rounded-xl border border-border/80 bg-background shadow-[0_18px_50px_-36px_rgba(0,0,0,0.45)]">
-                                    <div className="flex items-center gap-2 border-b border-border/70 px-4 py-2.5">
-                                        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand/15 text-[11px] font-semibold text-brand">
-                                            {index + 1}
-                                        </span>
-                                        <span className="text-sm font-medium text-foreground">
-                                            {step.title}
-                                        </span>
-                                    </div>
-                                    <div className="relative aspect-[16/10] bg-muted/20">
-                                        <Image
-                                            src={step.image}
-                                            alt={step.alt}
-                                            fill
-                                            className="object-cover object-top"
-                                            sizes="(max-width: 1024px) 100vw, 55vw"
-                                        />
                                     </div>
                                 </div>
                             </Reveal>
-                        ))}
-                    </div>
+                        );
+                    })}
                 </div>
             </div>
         </section>
