@@ -47,9 +47,9 @@
         --destructive-foreground: 0 0% 98%;
         --border: 240 3.7% 18%;
         --input: 240 3.7% 18%;
-        --ring: 42 100% 55%;
-        --brand: 42 100% 55%;
-        --brand-foreground: 32 100% 8%;
+        --ring: 42 100% 58%;
+        --brand: 42 100% 58%;
+        --brand-foreground: 32 100% 6%;
     }
 }
 
@@ -73,5 +73,31 @@
         @apply absolute inline-flex h-9 w-9 items-center justify-center rounded-full border-4 border-background bg-muted text-center -indent-px font-mono text-base font-medium;
         @apply ml-[-50px] mt-[-4px];
         content: counter(step);
+    }
+}
+
+@keyframes home-hero-rise {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .home-hero-copy {
+        animation: home-hero-rise 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+    }
+
+    .home-hero-cta {
+        animation: home-hero-rise 0.55s cubic-bezier(0.22, 1, 0.36, 1) 0.1s both;
+    }
+
+    .home-hero-visual {
+        animation: home-hero-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.14s
+            both;
     }
 }

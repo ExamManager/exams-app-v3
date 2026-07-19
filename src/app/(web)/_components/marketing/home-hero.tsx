@@ -1,115 +1,81 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
-import { motion, useReducedMotion } from "motion/react";
-import { ProductFrame } from "@/app/(web)/_components/marketing/product-frame";
 import { buttonVariants } from "@/components/ui/button";
 import { siteUrls } from "@/config/urls";
 import { cn } from "@/lib/utils";
 
 export function HomeHero() {
-    const prefersReducedMotion = useReducedMotion();
-
     return (
-        <section className="relative min-h-[100dvh] overflow-hidden">
+        <section className="relative overflow-hidden">
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_78%_12%,rgba(255,176,0,0.2),transparent_55%),radial-gradient(ellipse_40%_30%_at_6%_90%,rgba(255,176,0,0.08),transparent_50%)]"
+                className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_70%_-10%,rgba(255,176,0,0.18),transparent_55%),radial-gradient(ellipse_40%_30%_at_0%_40%,rgba(255,176,0,0.05),transparent_50%)]"
             />
             <div
                 aria-hidden
-                className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,hsl(var(--border)/0.45)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.45)_1px,transparent_1px)] bg-[size:48px_48px] [mask-image:radial-gradient(ellipse_70%_60%_at_60%_30%,black,transparent)]"
+                className="pointer-events-none absolute inset-0 opacity-[0.35] dark:opacity-[0.18] [background-image:linear-gradient(to_right,hsl(var(--border)/0.55)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.55)_1px,transparent_1px)] [background-size:72px_72px] [mask-image:radial-gradient(ellipse_70%_50%_at_20%_0%,black,transparent)]"
             />
 
-            <div className="relative container flex min-h-[calc(100dvh-7.5rem)] max-w-[1400px] flex-col justify-start gap-8 px-4 pb-12 pt-10 md:gap-10 md:pt-12 lg:grid lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.28fr)] lg:items-start lg:gap-12 lg:pb-16 lg:pt-14">
-                <div className="relative z-10 max-w-xl space-y-6">
-                    <motion.div
-                        initial={
-                            prefersReducedMotion
-                                ? false
-                                : { opacity: 0, y: 18 }
-                        }
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.55,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="space-y-4"
-                    >
-                        <p className="font-heading text-4xl font-bold tracking-tight text-brand sm:text-5xl md:text-6xl">
-                            ExamManager
-                        </p>
-                        <h1 className="font-heading text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl md:leading-[1.15]">
-                            Calm timing for every exam day
-                        </h1>
-                        <p className="max-w-md text-base leading-relaxed text-muted-foreground">
-                            Classroom timers, multi-exam sessions, and seating
-                            that keep exam day quiet.
-                        </p>
-                    </motion.div>
+            <div className="relative z-10 flex min-h-[100dvh] flex-col">
+                <div className="container max-w-[1400px] px-4 pb-8 pt-10 sm:px-6 sm:pt-12 lg:px-8 lg:pt-14">
+                    <div className="max-w-2xl space-y-7">
+                        <div className="home-hero-copy space-y-5">
+                            <p className="font-heading text-[clamp(2.85rem,7vw,5.25rem)] font-bold leading-[0.9] tracking-tight text-brand">
+                                ExamManager
+                            </p>
+                            <h1 className="max-w-[16ch] font-heading text-[clamp(1.5rem,3.1vw,2.35rem)] font-semibold leading-[1.12] tracking-tight text-foreground">
+                                Calm timing for every exam day
+                            </h1>
+                            <p className="max-w-md text-base leading-relaxed text-muted-foreground sm:text-lg">
+                                Classroom timers, multi-exam sessions, and
+                                seating that keep exam day quiet.
+                            </p>
+                        </div>
 
-                    <motion.div
-                        initial={
-                            prefersReducedMotion
-                                ? false
-                                : { opacity: 0, y: 14 }
-                        }
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.5,
-                            delay: prefersReducedMotion ? 0 : 0.12,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="flex flex-wrap items-center gap-3"
-                    >
-                        <Link
-                            href={siteUrls.features}
-                            className={cn(
-                                buttonVariants({ size: "lg" }),
-                                "active:scale-[0.98]",
-                            )}
-                        >
-                            Explore features
-                        </Link>
-                        <Link
-                            href={siteUrls.pricing}
-                            className={cn(
-                                buttonVariants({
-                                    size: "lg",
-                                    variant: "outline",
-                                }),
-                                "active:scale-[0.98]",
-                            )}
-                        >
-                            See pricing
-                        </Link>
-                    </motion.div>
+                        <div className="home-hero-cta flex flex-wrap items-center gap-3">
+                            <Link
+                                href={siteUrls.features}
+                                className={cn(
+                                    buttonVariants({ size: "lg" }),
+                                    "bg-brand text-brand-foreground shadow-none hover:bg-brand/90 active:scale-[0.98]",
+                                )}
+                            >
+                                Explore features
+                            </Link>
+                            <Link
+                                href={siteUrls.pricing}
+                                className={cn(
+                                    buttonVariants({
+                                        size: "lg",
+                                        variant: "outline",
+                                    }),
+                                    "active:scale-[0.98]",
+                                )}
+                            >
+                                See pricing
+                            </Link>
+                        </div>
+                    </div>
                 </div>
 
-                <motion.div
-                    initial={
-                        prefersReducedMotion ? false : { opacity: 0, y: 28 }
-                    }
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                        duration: 0.7,
-                        delay: prefersReducedMotion ? 0 : 0.18,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="relative z-10 lg:-mr-2 xl:-mr-6"
-                >
+                <div className="home-hero-visual relative mt-auto w-full">
                     <div
                         aria-hidden
-                        className="absolute -inset-8 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(255,176,0,0.34),transparent_65%)] blur-2xl"
+                        className="absolute inset-x-0 top-0 z-10 h-16 bg-gradient-to-b from-background to-transparent"
                     />
-                    <ProductFrame
-                        src="/marketing/hero-overview.png"
-                        alt="ExamManager exams overview with timed papers and classroom sessions"
-                        width={1440}
-                        height={900}
-                        priority
-                    />
-                </motion.div>
+                    <div className="relative aspect-[16/9] w-full min-h-[280px] max-h-[min(58vh,640px)] overflow-hidden sm:min-h-[360px]">
+                        <Image
+                            src="/marketing/hero-overview.png"
+                            alt="ExamManager exams overview with timed papers and classroom sessions"
+                            fill
+                            priority
+                            className="object-cover object-top"
+                            sizes="100vw"
+                        />
+                    </div>
+                </div>
             </div>
         </section>
     );

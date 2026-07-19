@@ -2,13 +2,11 @@ import Image from "next/image";
 import Link from "next/link";
 import {
     ArrowRight,
-    CalendarDays,
-    BarChart3,
     Clock3,
     LayoutGrid,
-    Users,
+    ListChecks,
+    PenLine,
 } from "lucide-react";
-import { ProductFrame } from "@/app/(web)/_components/marketing/product-frame";
 import { Reveal } from "@/app/(web)/_components/marketing/reveal";
 import { buttonVariants } from "@/components/ui/button";
 import { AUTH_DISABLED } from "@/config/showcase";
@@ -20,7 +18,7 @@ export function HomeSections() {
     return (
         <div className="relative">
             <TimerShowcase />
-            <CapabilityBento />
+            <CapabilityStrip />
             <HowItWorks />
             <PricingTeaser />
             <ClosingCta />
@@ -30,34 +28,29 @@ export function HomeSections() {
 
 function TimerShowcase() {
     return (
-        <section className="border-t border-border/70 py-20 md:py-28">
+        <section className="border-t border-border/60 py-20 md:py-28">
             <div className="container max-w-[1400px] px-4 sm:px-6 lg:px-8">
-                <div className="grid items-center gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
+                <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
                     <Reveal>
-                        <div className="relative">
-                            <div
-                                aria-hidden
-                                className="absolute -inset-4 rounded-2xl bg-[radial-gradient(ellipse_at_30%_40%,rgba(255,176,0,0.18),transparent_60%)] blur-xl"
-                            />
-                            <ProductFrame
-                                src="/marketing/timer-display.png"
-                                alt="Classroom exam timer display with remaining time"
-                                width={1200}
-                                height={800}
+                        <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950">
+                            <Image
+                                src="/marketing/seating.png"
+                                alt="Multi-exam session with live classroom clock"
+                                fill
+                                className="object-cover object-top"
                                 sizes="(max-width: 1024px) 100vw, 50vw"
                             />
                         </div>
                     </Reveal>
 
                     <Reveal delay={0.08}>
-                        <div className="max-w-lg space-y-5 lg:pl-2">
-                            <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-brand/35 bg-brand/10 text-brand">
-                                <Clock3
-                                    className="h-5 w-5"
-                                    strokeWidth={1.75}
-                                />
-                            </div>
-                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+                        <div className="max-w-lg space-y-6 lg:pl-2">
+                            <Clock3
+                                className="h-7 w-7 text-brand"
+                                strokeWidth={1.6}
+                                aria-hidden
+                            />
+                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
                                 A classroom timer students can trust
                             </h2>
                             <p className="text-base leading-relaxed text-muted-foreground sm:text-lg">
@@ -66,19 +59,19 @@ function TimerShowcase() {
                                 access arrangements, and keep every room on the
                                 same calm clock.
                             </p>
-                            <ul className="space-y-2.5 text-sm text-muted-foreground sm:text-base">
-                                <li className="flex gap-2">
-                                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                                    Low-distraction display for invigilators
-                                </li>
-                                <li className="flex gap-2">
-                                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                                    Reading time and extra time built in
-                                </li>
-                                <li className="flex gap-2">
-                                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" />
-                                    One clock across overlapping papers
-                                </li>
+                            <ul className="space-y-3 text-sm text-muted-foreground sm:text-base">
+                                {[
+                                    "Low-distraction display for invigilators",
+                                    "Reading time and extra time built in",
+                                    "One clock across overlapping papers",
+                                ].map((item) => (
+                                    <li
+                                        key={item}
+                                        className="flex gap-3 border-l-2 border-brand/60 pl-4"
+                                    >
+                                        {item}
+                                    </li>
+                                ))}
                             </ul>
                         </div>
                     </Reveal>
@@ -88,134 +81,92 @@ function TimerShowcase() {
     );
 }
 
-function CapabilityBento() {
+const capabilities = [
+    {
+        icon: LayoutGrid,
+        title: "Run overlapping papers in one session",
+        body: "Time several cohorts at once when rooms and start times collide.",
+        image: "/marketing/seating.png",
+        alt: "Multiple exam papers running with a shared classroom clock",
+        object: "object-top",
+    },
+    {
+        icon: PenLine,
+        title: "Set up papers in minutes",
+        body: "Define subjects, durations, reading time, and extra time before the day begins.",
+        image: "/marketing/create-exam.png",
+        alt: "Create exam form with timing options",
+        object: "object-top",
+    },
+    {
+        icon: ListChecks,
+        title: "Keep the exam list readable",
+        body: "Filter by subject, paper, and level so staff can find the right cohort fast.",
+        image: "/marketing/hero-overview.png",
+        alt: "ExamManager exams list with filters and papers",
+        object: "object-left-top",
+    },
+] as const;
+
+function CapabilityStrip() {
     return (
-        <section className="border-t border-border/70 bg-muted/20 py-20 md:py-28 dark:bg-muted/10">
+        <section className="border-t border-border/60 bg-muted/25 py-20 md:py-28 dark:bg-muted/10">
             <div className="container max-w-[1400px] px-4 sm:px-6 lg:px-8">
                 <Reveal>
-                    <div className="mb-12 max-w-2xl space-y-3">
-                        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+                    <div className="mb-14 max-w-2xl space-y-3 md:mb-16">
+                        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
                             Built for school exam weeks
                         </h2>
                         <p className="text-base text-muted-foreground sm:text-lg">
-                            Multi-exam rooms, timetables, seating, and review
-                            tools that stay readable under pressure.
+                            Multi-exam rooms, clear setup, and lists that stay
+                            readable under pressure.
                         </p>
                     </div>
                 </Reveal>
 
-                <div className="grid gap-4 md:grid-cols-12 md:gap-5">
-                    <Reveal className="md:col-span-7">
-                        <div className="group relative flex h-full min-h-[280px] flex-col overflow-hidden rounded-xl border border-border/80 bg-background">
-                            <div className="relative flex-1 overflow-hidden">
-                                <Image
-                                    src="/marketing/multi-exam.png"
-                                    alt="Multiple exams running in parallel"
-                                    fill
-                                    className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.02]"
-                                    sizes="(max-width: 768px) 100vw, 58vw"
-                                />
-                                <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-                            </div>
-                            <div className="relative space-y-2 p-6 pt-0">
-                                <LayoutGrid
-                                    className="mb-2 h-5 w-5 text-brand"
-                                    strokeWidth={1.75}
-                                />
-                                <h3 className="font-heading text-xl font-semibold tracking-tight">
-                                    Run overlapping papers in one session
-                                </h3>
-                                <p className="max-w-md text-sm text-muted-foreground">
-                                    Time several cohorts at once when rooms and
-                                    start times collide.
-                                </p>
-                            </div>
-                        </div>
-                    </Reveal>
+                <div className="space-y-16 md:space-y-24">
+                    {capabilities.map((item, index) => {
+                        const Icon = item.icon;
+                        const reverse = index % 2 === 1;
 
-                    <Reveal delay={0.06} className="md:col-span-5">
-                        <div className="flex h-full min-h-[280px] flex-col justify-between rounded-xl border border-border/80 bg-background p-6 sm:p-8">
-                            <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-border text-brand">
-                                <CalendarDays
-                                    className="h-5 w-5"
-                                    strokeWidth={1.75}
-                                />
-                            </div>
-                            <div className="space-y-3">
-                                <h3 className="font-heading text-2xl font-semibold tracking-tight">
-                                    Timetables staff can scan
-                                </h3>
-                                <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                                    Plan exam weeks with schedules that stay
-                                    clear for invigilators and office teams.
-                                </p>
-                            </div>
-                            <div className="relative mt-6 aspect-[16/10] overflow-hidden rounded-lg border border-border/70">
-                                <Image
-                                    src="/marketing/timetable.png"
-                                    alt="Exam timetable planning view"
-                                    fill
-                                    className="object-cover object-top"
-                                    sizes="(max-width: 768px) 100vw, 40vw"
-                                />
-                            </div>
-                        </div>
-                    </Reveal>
-
-                    <Reveal delay={0.04} className="md:col-span-5">
-                        <div className="relative flex h-full min-h-[240px] overflow-hidden rounded-xl border border-border/80">
-                            <Image
-                                src="/marketing/seating.png"
-                                alt="Classroom seating plan layout"
-                                fill
-                                className="object-cover object-center"
-                                sizes="(max-width: 768px) 100vw, 40vw"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-background/50 to-background/10" />
-                            <div className="relative mt-auto space-y-2 p-6">
-                                <Users
-                                    className="mb-1 h-5 w-5 text-brand"
-                                    strokeWidth={1.75}
-                                />
-                                <h3 className="font-heading text-xl font-semibold tracking-tight">
-                                    Seat every student before the bell
-                                </h3>
-                                <p className="max-w-sm text-sm text-muted-foreground">
-                                    Lay out rooms quickly so candidates know
-                                    where to sit on the day.
-                                </p>
-                            </div>
-                        </div>
-                    </Reveal>
-
-                    <Reveal delay={0.1} className="md:col-span-7">
-                        <div className="grid h-full min-h-[240px] gap-0 overflow-hidden rounded-xl border border-border/80 bg-background sm:grid-cols-[0.9fr_1.1fr]">
-                            <div className="flex flex-col justify-center space-y-3 p-6 sm:p-8">
-                                <div className="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-brand/35 bg-brand/10 text-brand">
-                                    <BarChart3
-                                        className="h-5 w-5"
-                                        strokeWidth={1.75}
-                                    />
-                                </div>
-                                <h3 className="font-heading text-xl font-semibold tracking-tight sm:text-2xl">
-                                    Review after the session
-                                </h3>
-                                <p className="text-sm leading-relaxed text-muted-foreground">
-                                    Capture outcomes and refine the next exam
-                                    week with clearer planning data.
-                                </p>
-                            </div>
-                            <div className="relative min-h-[180px] border-t border-border/70 sm:min-h-0 sm:border-l sm:border-t-0">
-                                <Image
-                                    src="/marketing/analytics.png"
-                                    alt="Exam analytics and session review"
-                                    fill
-                                    className="object-cover object-left-top"
-                                    sizes="(max-width: 768px) 100vw, 35vw"
-                                />
-                            </div>
-                        </div>
-                    </Reveal>
+                        return (
+                            <Reveal key={item.title} delay={index * 0.04}>
+                                <article
+                                    className={cn(
+                                        "grid items-center gap-8 lg:grid-cols-2 lg:gap-14",
+                                        reverse &&
+                                            "lg:[&>*:first-child]:order-2",
+                                    )}
+                                >
+                                    <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950">
+                                        <Image
+                                            src={item.image}
+                                            alt={item.alt}
+                                            fill
+                                            className={cn(
+                                                "object-cover transition-transform duration-700 ease-out hover:scale-[1.03]",
+                                                item.object,
+                                            )}
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                        />
+                                    </div>
+                                    <div className="max-w-md space-y-4 lg:space-y-5">
+                                        <Icon
+                                            className="h-6 w-6 text-brand"
+                                            strokeWidth={1.6}
+                                            aria-hidden
+                                        />
+                                        <h3 className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
+                                            {item.title}
+                                        </h3>
+                                        <p className="text-base leading-relaxed text-muted-foreground">
+                                            {item.body}
+                                        </p>
+                                    </div>
+                                </article>
+                            </Reveal>
+                        );
+                    })}
                 </div>
             </div>
         </section>
@@ -235,74 +186,60 @@ function HowItWorks() {
             title: "Run",
             description:
                 "Launch the classroom display and keep every cohort on the same clock.",
-            image: "/marketing/session-live.png",
-            alt: "Live exam session timer running",
+            image: "/marketing/seating.png",
+            alt: "Live multi-exam session with classroom clock",
         },
         {
             title: "Review",
             description:
-                "Check outcomes, tidy the timetable, and prepare the next session.",
-            image: "/marketing/dashboard.png",
-            alt: "Exam dashboard after a session",
+                "Check the exam list, tidy the next session, and prepare again.",
+            image: "/marketing/hero-overview.png",
+            alt: "Exam dashboard after planning a session",
         },
     ] as const;
 
     return (
-        <section className="border-t border-border/70 py-20 md:py-28">
+        <section className="border-t border-border/60 py-20 md:py-28">
             <div className="container max-w-[1400px] px-4 sm:px-6 lg:px-8">
-                <div className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
-                    <Reveal>
-                        <div className="sticky top-28 max-w-md space-y-6">
-                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-                                How it works
-                            </h2>
-                            <p className="text-base text-muted-foreground sm:text-lg">
-                                From plan to quiet, on-time rooms in three
-                                clear moves.
-                            </p>
-                            <ol className="space-y-6">
-                                {steps.map((step, index) => (
-                                    <li
-                                        key={step.title}
-                                        className="border-l-2 border-brand/50 pl-4"
-                                    >
-                                        <p className="font-heading text-lg font-semibold tracking-tight">
-                                            <span className="mr-2 text-brand">
-                                                {index + 1}.
-                                            </span>
-                                            {step.title}
-                                        </p>
-                                        <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-                                            {step.description}
-                                        </p>
-                                    </li>
-                                ))}
-                            </ol>
-                        </div>
-                    </Reveal>
-
-                    <div className="space-y-5">
-                        {steps.map((step, index) => (
-                            <Reveal key={step.title} delay={index * 0.06}>
-                                <div className="overflow-hidden rounded-xl border border-border/80 bg-background">
-                                    <div className="border-b border-border/70 px-4 py-2.5">
-                                        <span className="text-sm font-medium text-foreground">
-                                            {step.title}
-                                        </span>
-                                    </div>
-                                    <div className="relative aspect-[16/10]">
-                                        <Image
-                                            src={step.image}
-                                            alt={step.alt}
-                                            fill
-                                            className="object-cover object-top"
-                                            sizes="(max-width: 1024px) 100vw, 55vw"
-                                        />
-                                    </div>
-                                </div>
-                            </Reveal>
-                        ))}
+                <Reveal>
+                    <div className="mb-12 max-w-xl space-y-3 md:mb-16">
+                        <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
+                            How it works
+                        </h2>
+                        <p className="text-base text-muted-foreground sm:text-lg">
+                            From plan to quiet, on-time rooms in three clear
+                            moves.
+                        </p>
                     </div>
+                </Reveal>
+
+                <div className="grid gap-10 md:grid-cols-3 md:gap-8">
+                    {steps.map((step, index) => (
+                        <Reveal key={step.title} delay={index * 0.07}>
+                            <div className="space-y-5">
+                                <div className="flex items-baseline gap-3">
+                                    <span className="font-heading text-4xl font-bold tabular-nums text-brand">
+                                        {String(index + 1).padStart(2, "0")}
+                                    </span>
+                                    <h3 className="font-heading text-xl font-semibold tracking-tight">
+                                        {step.title}
+                                    </h3>
+                                </div>
+                                <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                                    {step.description}
+                                </p>
+                                <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950">
+                                    <Image
+                                        src={step.image}
+                                        alt={step.alt}
+                                        fill
+                                        className="object-cover object-top"
+                                        sizes="(max-width: 768px) 100vw, 33vw"
+                                    />
+                                </div>
+                            </div>
+                        </Reveal>
+                    ))}
                 </div>
             </div>
         </section>
@@ -311,12 +248,12 @@ function HowItWorks() {
 
 function PricingTeaser() {
     return (
-        <section className="border-t border-border/70 bg-muted/20 py-20 md:py-28 dark:bg-muted/10">
+        <section className="border-t border-border/60 bg-muted/25 py-20 md:py-28 dark:bg-muted/10">
             <div className="container max-w-[1400px] px-4 sm:px-6 lg:px-8">
                 <Reveal>
-                    <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between">
+                    <div className="mb-10 flex flex-col gap-4 sm:mb-14 sm:flex-row sm:items-end sm:justify-between">
                         <div className="max-w-xl space-y-3">
-                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
+                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
                                 Simple plans for school teams
                             </h2>
                             <p className="text-base text-muted-foreground">
@@ -340,32 +277,38 @@ function PricingTeaser() {
                     </div>
                 </Reveal>
 
-                <div className="grid gap-4 md:grid-cols-3">
+                <div className="grid gap-0 border-y border-border/70 md:grid-cols-3">
                     {pricings.map((plan, index) => (
-                        <Reveal key={plan.id} delay={index * 0.06}>
+                        <Reveal key={plan.id} delay={index * 0.05}>
                             <div
                                 className={cn(
-                                    "relative flex h-full flex-col border border-border/80 bg-background px-5 py-6",
-                                    plan.buttonHighlighted &&
-                                        "border-brand/55 shadow-[0_0_0_1px_rgba(255,176,0,0.12)]",
+                                    "relative flex h-full flex-col px-5 py-8 sm:px-7",
+                                    index > 0 &&
+                                        "border-t border-border/70 md:border-l md:border-t-0",
+                                    plan.buttonHighlighted && "bg-brand/[0.06]",
                                 )}
                             >
                                 {plan.badge ? (
-                                    <span className="absolute -top-2.5 left-5 rounded-full bg-brand px-2.5 py-0.5 text-[11px] font-medium text-brand-foreground">
+                                    <span className="mb-3 text-[11px] font-semibold uppercase tracking-[0.14em] text-brand">
                                         {plan.badge}
                                     </span>
-                                ) : null}
+                                ) : (
+                                    <span
+                                        className="mb-3 h-[17px]"
+                                        aria-hidden
+                                    />
+                                )}
                                 <p className="text-sm font-medium text-muted-foreground">
                                     {plan.title}
                                 </p>
-                                <p className="mt-3 font-heading text-4xl font-semibold tracking-tight">
+                                <p className="mt-3 font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
                                     {plan.currency.symbol}
                                     {plan.price === 0 ? "0" : plan.price}
                                     <span className="ml-1 text-sm font-normal text-muted-foreground">
                                         /mo
                                     </span>
                                 </p>
-                                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+                                <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
                                     {plan.uniqueFeatures?.[0]}
                                 </p>
                             </div>
@@ -379,39 +322,41 @@ function PricingTeaser() {
 
 function ClosingCta() {
     return (
-        <section className="border-t border-border/70 py-20 md:py-24">
-            <div className="container max-w-[1400px] px-4 sm:px-6 lg:px-8">
+        <section className="relative overflow-hidden border-t border-border/60">
+            <div
+                aria-hidden
+                className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(255,176,0,0.16),transparent_50%),radial-gradient(ellipse_at_90%_100%,rgba(255,176,0,0.08),transparent_45%)]"
+            />
+            <div
+                aria-hidden
+                className="pointer-events-none absolute inset-0 opacity-[0.4] [background-image:linear-gradient(to_right,hsl(var(--border)/0.5)_1px,transparent_1px),linear-gradient(to_bottom,hsl(var(--border)/0.5)_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_70%_60%_at_50%_40%,black,transparent)]"
+            />
+
+            <div className="container relative max-w-[1400px] px-4 py-24 sm:px-6 md:py-32 lg:px-8">
                 <Reveal>
-                    <div className="relative overflow-hidden rounded-2xl border border-border/80 px-6 py-12 sm:px-10 sm:py-14">
-                        <div
-                            aria-hidden
-                            className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_20%_0%,rgba(255,176,0,0.16),transparent_50%),radial-gradient(ellipse_at_90%_100%,rgba(255,176,0,0.08),transparent_45%)]"
-                        />
-                        <div
-                            aria-hidden
-                            className="pointer-events-none absolute inset-0 bg-[url('/marketing/classroom.png')] bg-cover bg-center opacity-[0.06] dark:opacity-[0.1]"
-                        />
-                        <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
-                            <h2 className="font-heading text-3xl font-semibold tracking-tight sm:text-4xl">
-                                Explore ExamManager
-                            </h2>
-                            <p className="mt-3 max-w-lg text-base text-muted-foreground">
-                                Browse the open source on GitHub. Signup stays
-                                off for this portfolio showcase.
-                            </p>
-                            <div className="mt-8">
-                                <Link
-                                    href={siteUrls.github}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className={cn(
-                                        buttonVariants({ size: "lg" }),
-                                        "active:scale-[0.98]",
-                                    )}
-                                >
-                                    View on GitHub
-                                </Link>
-                            </div>
+                    <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+                        <p className="font-heading text-4xl font-bold tracking-tight text-brand sm:text-5xl">
+                            ExamManager
+                        </p>
+                        <h2 className="mt-4 font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
+                            Explore the open source
+                        </h2>
+                        <p className="mt-3 max-w-lg text-base text-muted-foreground">
+                            Browse the code on GitHub. Signup stays off for this
+                            portfolio showcase.
+                        </p>
+                        <div className="mt-8">
+                            <Link
+                                href={siteUrls.github}
+                                target="_blank"
+                                rel="noreferrer"
+                                className={cn(
+                                    buttonVariants({ size: "lg" }),
+                                    "bg-brand text-brand-foreground shadow-none hover:bg-brand/90 active:scale-[0.98]",
+                                )}
+                            >
+                                View on GitHub
+                            </Link>
                         </div>
                     </div>
                 </Reveal>
