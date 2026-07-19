@@ -2,6 +2,7 @@ import React from "react";
 import Background from "@/components/background";
 import { Providers } from "@/components/providers";
 import { Toaster } from "@/components/ui/sonner";
+import { DeprecationBanner } from "@/components/deprecation-banner";
 import "@/styles/globals.css";
 import "@/styles/prism.css";
 import { fontHeading, fontSans } from "@/lib/fonts";
@@ -25,6 +26,9 @@ export default function RootLayout({
                 className={`${fontSans.variable} ${fontHeading.variable} overflow-x-hidden font-sans`}
             >
                 <Providers>
+                    <div className="sticky top-0 z-[60]">
+                        <DeprecationBanner />
+                    </div>
                     <Background>{children}</Background>
                     <Toaster richColors position="top-right" expand />
                 </Providers>
